@@ -1,0 +1,58 @@
+const SDK_EVENTS = {
+  SDK_READY: 'SDK_READY', // sdk 登陆成功后触发
+  SDK_NOT_READY: 'SDK_NOT_READY', // sdk登陆失败后触发
+} as const;
+
+const CONVERSATION_EVENTS = {
+  CONVERSATION_LIST_UPDATED: 'CONVERSATION_LIST_UPDATED', // 会话列表更新触发
+};
+
+const MESSAGE_EVENTS = {
+  MESSAGE_RECEIVED: 'MESSAGE_RECEIVED', // 收到新消息后触发
+  MESSAGE_MODIFIED: 'MESSAGE_MODIFIED', // 消息被修改后触发
+  MESSAGE_REVOKED: 'MESSAGE_REVOKED', // 消息被撤回后触发
+  MESSAGE_REPLIED: 'MESSAGE_REPLIED', // 消息被撤回后触发
+  MESSAGE_READED: 'MESSAGE_READED', // 消息被读后触发
+  MESSAGE_DELETED: 'MESSAGE_DELETED', // 消息被删除后触发
+  AT_USER: 'AT_USER', //@某个人
+} as const;
+
+const USER_EVENTS = {
+  PROFILE_UPDATED: 'PROFILE_UPDATED', // 用户资料发生变化时触发
+  USER_STATUS_UPDATED: 'USER_STATUS_UPDATED', // 用户在线状态变更时触发
+} as const;
+
+const FRIEND_EVENTS = {
+  FRIEND_LIST_UPDATED: 'FRIEND_LIST_UPDATED', // 好友列表更新触发
+  BLACKLIST_UPDATED: 'BLACKLIST_UPDATED', // 黑名单更新触发
+  FRIEND_APPLICATION_LIST_UPDATED: 'FRIEND_APPLICATION_LIST_UPDATED', // 好友申请列表更新触发
+} as const;
+
+const GROUP_EVENTS = {
+  GROUP_LIST_UPDATED: 'GROUP_LIST_UPDATED', // 群列表更新触发
+  GROUP_PANEL_UPDATE: 'GROUP_PANEL_UPDATE', // 群面板状态
+  GROUP_INFO_UPDATE: 'GROUP_INFO_UPDATE', // 群面信息更改时触发
+  GROUP_NOTICE_UPDATE: 'GROUP_NOTICE_UPDATE', // 群公告更改时触发
+} as const;
+
+const NET_EVENTS = {
+  NET_STATE_CHANGE: 'NET_STATE_CHANGE', // 网络连接状态变化时触发
+  NET_CONNENT_DELAY_CHANGR: 'NET_CONNENT_DELAY_CHANGR', // 网络连接延迟变化时触发
+} as const;
+
+export const Events = Object.assign(
+  {},
+  SDK_EVENTS,
+  CONVERSATION_EVENTS,
+  MESSAGE_EVENTS,
+  USER_EVENTS,
+  FRIEND_EVENTS,
+  NET_EVENTS,
+  GROUP_EVENTS,
+) as typeof SDK_EVENTS &
+  typeof CONVERSATION_EVENTS &
+  typeof MESSAGE_EVENTS &
+  typeof USER_EVENTS &
+  typeof FRIEND_EVENTS &
+  typeof NET_EVENTS &
+  typeof GROUP_EVENTS;

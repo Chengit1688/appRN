@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="News Detail" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #content {
+            width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+    </div>
+    <script>
+        // 这里的方法是提供给APP端调用的
+        window.postMessage = (data) => {
+            document.getElementById('content').innerHTML = data;
+            const h = document.getElementById('content').offsetHeight;
+            window.ReactNativeWebView.postMessage(h);
+            // window.ReactNativeWebView.postMessage();
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

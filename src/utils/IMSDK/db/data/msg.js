@@ -1,0 +1,38 @@
+export default [
+  {
+    client_msg_id: 'slaka',
+    msg_id: '1',
+    conversation_id: 'f2d3fc71-b983-4bff-8a78-80397d867634',
+    send_id: '1',
+    send_nickname: 'aaa',
+    send_face_url: 'aaa',
+    send_time: 11111,
+    type: 2,
+    content: 'aaa',
+    status: 1,
+  },
+  {
+    client_msg_id: 'aslsak',
+    msg_id: '2',
+    conversation_id: 'f2d3fc71-b983-4bff-8a78-80397d867634',
+    send_id: '1',
+    send_nickname: 'aaa',
+    send_face_url: 'aaa',
+    send_time: 11111,
+    type: 2,
+    content: 'bbb',
+    status: 1,
+  },
+  {
+    client_msg_id: 'asia',
+    msg_id: '3',
+    conversation_id: 'f2d3fc71-b983-4bff-8a78-80397d867634',
+    send_id: '1',
+    send_nickname: 'aaa',
+    send_face_url: 'aaa',
+    send_time: 11111,
+    type: 2,
+    content: 'ccc',
+    status: 1,
+  }
+]

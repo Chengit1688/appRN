@@ -1,0 +1,45 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        googlePlayServicesVersion = "+" // default: "+"
+        firebaseMessagingVersion = "21.1.0"
+
+        buildToolsVersion = "33.0.0"
+            // Note: Below change is necessary for pause / resume audio feature. Not for Kotlin.
+        //minSdkVersion = 24
+         minSdkVersion = 21
+        compileSdkVersion = 33
+        targetSdkVersion = 33
+        kotlinVersion = '1.7.10'
+
+        // We use NDK 23 which has both M1 support and is the side-by-side NDK version from AGP.
+        ndkVersion = "23.1.7779620"
+    }
+    allprojects {
+        tasks.withType(JavaCompile) {
+            options.deprecation = true
+        }
+    }
+    repositories {
+        google()
+        mavenCentral()
+         exclusiveContent {
+           filter {
+               includeGroup "com.facebook.react"
+           }
+           forRepository {
+               maven {
+                   url "$rootDir/../node_modules/react-native/android"
+               }
+           }
+       }
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        
+    }
+}
+
