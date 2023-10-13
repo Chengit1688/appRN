@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useMemo} from 'react';
 import {VirtualizedList} from 'react-native';
 import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-
+import {useTranslation} from 'react-i18next';
 import imsdk, {IMSDK} from '@/utils/IMSDK';
 import {RootState} from '@/store';
 import {
@@ -13,11 +13,12 @@ import {
   updateCurrentMessageList,
   chearConversationAtInfo,
 } from '@/store/reducers/conversation';
-import MessageItem from './MessageItem';
+import MessageItem,{NewMessageItem} from './MessageItem';
 
 export default function Main({source}: {source: any[]}) {
   const dispatch = useDispatch();
   const {navigate} = useNavigation();
+  const {t} = useTranslation();
   const currentConversation: any = useSelector(
     (state: RootState) => state.conversation.currentConversation,
     shallowEqual,
@@ -59,6 +60,8 @@ export default function Main({source}: {source: any[]}) {
 
   const onPressItem = useCallback(
     async (conversation: IMSDK.Conversation) => {
+      console.log('onPressItem');
+      console.log(conversation, currentConversation);
       const conv_id = conversation.conversation_id;
       if (conversation.at) {
         dispatch(chearConversationAtInfo(conversation));
@@ -90,7 +93,7 @@ export default function Main({source}: {source: any[]}) {
       });
       navigate('Chat');
     },
-    [currentConversation, source],
+    [currentConversation],
   );
 
   return (
@@ -100,7 +103,8 @@ export default function Main({source}: {source: any[]}) {
           initialNumToRender={10}
           data={source}
           renderItem={({item}) => (
-            <MessageItem conv={item} onPressItem={item => onPressItem(item)} />
+            <NewMessageItem onPressItem={(item:any) => onPressItem(item) } selfInfo = {selfInfo} dispatch = {dispatch} conv={item} t = {t}/>
+            // <MessageItem conv={item} onPressItem={(item:any) => onPressItem(item) }/>
           )}
           keyExtractor={(item: any) => item.conversation_id}
           getItemCount={() => source.length}

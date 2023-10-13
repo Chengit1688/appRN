@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "androidRelsease": "react-native run-android --variant=release",
     "ios": "react-native run-ios",
     "lint": "eslint --ext .js,.ts,.tsx src",
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx src",
