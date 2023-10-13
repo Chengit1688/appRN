@@ -10,7 +10,6 @@ export const initFriendData = async (serVersion: string) => {
   const user_id = store.getState().user.selfInfo.user_id;
 
   const version = await localStorage.getItem('friendversion' + user_id);
-  console.log(version, 'version', serVersion);
   let currentPage = 1;
   let currentSyncPage = 1;
   function getList(page: number, page_size: number) {
@@ -19,7 +18,6 @@ export const initFriendData = async (serVersion: string) => {
       .getFirendList({page, page_size, search_key: ''})
       .then(async (res: any) => {
         pages = parseInt(res?.count / page_size) + 1;
-        console.log(pages, 'pages');
         if (res.list?.length) {
           // let tmp = [];
           // let userTmp = [];
@@ -57,7 +55,6 @@ export const initFriendData = async (serVersion: string) => {
 
           const {tmp, userTmp} = formatData(res?.list, user_id);
 
-          console.log('发起通知，好友列表全量更新');
           imsdk.emit(IMSDK.Event.FRIEND_LIST_UPDATED, {
             friendList: tmp,
             type: 1,
@@ -76,7 +73,6 @@ export const initFriendData = async (serVersion: string) => {
       });
   }
   function syncList(page: number, page_size: number) {
-    console.log('同步好友列表===>');
     let pages = 1;
     imsdk
       .syncFirendList({page, page_size, version: +version})
@@ -118,7 +114,6 @@ export const initFriendData = async (serVersion: string) => {
           //   });
 
           const {tmp, userTmp} = formatData(res?.list, user_id);
-          console.log(tmp, userTmp, '====>数据修改');
           imsdk.emit(IMSDK.Event.FRIEND_LIST_UPDATED, {
             friendList: tmp,
             type: 1,
@@ -187,7 +182,6 @@ export const initFriendData = async (serVersion: string) => {
           black_status: item.black_status || 2,
         });
       });
-      console.log('发起通知，好友列表更新2', tmp);
       imsdk.emit(IMSDK.Event.FRIEND_LIST_UPDATED, {friendList: tmp, type: 1});
       await imsdk.comlink.insertUserList(userTmp);
       page++;

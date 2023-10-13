@@ -50,7 +50,6 @@ const AudioView: React.FC = () => {
 
     return `${hoursStr}:${minutesStr}:${secondsStr}`;
   };
-  console.log('videoPlaceholder===', videoPlaceholder);
 
   useEffect(() => {
     Dimensions.addEventListener('change', () => {
@@ -59,7 +58,6 @@ const AudioView: React.FC = () => {
     const startTime = new Date().getTime();
     //初始化开始计算时间
     const time = setInterval(() => {
-      // console.log(updateTimer(),'updateTimer')
       setTime(prevTime => prevTime + 1);
     }, 1000);
     return () => {

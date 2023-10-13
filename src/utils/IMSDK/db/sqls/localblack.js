@@ -52,7 +52,6 @@ export function insertBlack(db, localBlack) {
         .into('local_blacks')
         .setFields(localBlack)
         .toString();
-        console.log(sql)
     return db.exec(sql);
 }
 export function updateBlack(db, localBlack) {

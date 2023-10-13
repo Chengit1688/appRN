@@ -15,7 +15,6 @@ export const pickSingFile = async (fileType?: any) => {
     const res = await DocumentPicker.pick({
       type: DocumentPicker.types.allFiles,
     });
-    console.log('pickSingFile', res);
     return res;
   } catch (err) {}
 };

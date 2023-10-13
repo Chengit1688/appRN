@@ -107,7 +107,6 @@ export async function insertGroupMember(groupMember: any) {
 export async function updateGroupMemberById(groupMember: any) {
   try {
     const db = await getInstance();
-    console.log('updateGroupMemberById', groupMember);
     const execResult = await updateGroupMemberByIdLocal(db, groupMember);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {

@@ -44,7 +44,6 @@ Sound.setCategory('Playback'); // 设置音频播放类型
 
 const soundCall = new Sound(callMp3, error => {
   if (error) {
-    console.log('Error loading sound:', error);
   } else {
     soundCall.setNumberOfLoops(-1); // 设置循环播放
   }
@@ -52,7 +51,6 @@ const soundCall = new Sound(callMp3, error => {
 
 const soundEnd = new Sound(off, error => {
   if (error) {
-    console.log('Error loading sound:', error);
   }
 });
 
@@ -180,10 +178,6 @@ const AudioAndVideoToUser = (props: addContactProps) => {
         // 判断是否被自己接听 不是 关闭弹窗
 
         const device_id = await DeviceInfo.getUniqueId();
-        console.log(
-          '当前状态是3，token是:' + token,
-          receivedData.recv_device_id != device_id,
-        );
         if (
           receivedData.recv_device_id &&
           receivedData.recv_device_id != device_id
@@ -268,7 +262,6 @@ const AudioAndVideoToUser = (props: addContactProps) => {
           }}
           activeOpacity={1}
           onPress={() => {
-            console.log('点击了');
             setFull(false);
           }}>
           <Image

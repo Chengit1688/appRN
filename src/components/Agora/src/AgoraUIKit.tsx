@@ -24,7 +24,6 @@ import PopUp from './Controls/Remote/RemoteMutePopUp';
  */
 const AgoraUIKitv3: React.FC<PropsInterface> = (props) => {
   const {layout} = props.rtcProps;
-  console.log(props,'AgoraUIKitv3')
   return (
     <PropsProvider value={props}>
       <View style={[containerStyle, props.styleProps?.UIKitContainer]}>

@@ -47,7 +47,6 @@ export default function LoginForm(props: any) {
   const handleLogin = useRequest(userLogin, {
     manual: true,
     onSuccess: async (result: any) => {
-      console.log('result========>', result);
       if (result) {
         dispatch(setSelfInfo({user_id: result.user_id}));
         await StorageFactory.setSession('USER_LOGIN_INFO', {
@@ -174,7 +173,6 @@ export default function LoginForm(props: any) {
       });
       handleLogin.run(requestParams);
     } catch (error) {
-      console.log('error', error);
       GlobalLoading.endLoading();
     }
   };

@@ -40,7 +40,6 @@ export abstract class GroupActionlet extends BaseActionlet {
    */
   inviteToGroup(data: {group_id: string; user_id_list: string[]}) {
     if (data.user_id_list.length === 0) return Promise.resolve();
-    console.log(data, 'iuyiyi');
     return this.post<void>('/api/group/invite_group_member', data);
   }
 
@@ -228,7 +227,6 @@ export abstract class GroupActionlet extends BaseActionlet {
     let meberArr: MemberListItem[] = [];
     let adminArr: MemberListItem[] = [];
     const {currentMemberList} = this.store.getState().contacts;
-    console.log('currentMemberListcurrentMemberList', currentMemberList);
 
     if (currentMemberList.length) {
       for (let i = 0; i < currentMemberList.length; i++) {

@@ -4,14 +4,12 @@ export const initGroupMemberData = async (
   group_id: string,
   version?: {local_version?: number; server_version?: number},
 ) => {
-  console.log('initGroupMemberData-----', group_id, 'group_id', version);
   let currentPage = 1;
   let currentSyncPage = 1;
   function getList(page: number, page_size: number) {
     let pages = 1;
     imsdk.getGroupMemberList({group_id, page, page_size}).then(async res => {
       pages = parseInt(res?.count / page_size) + 1;
-      console.log(res.list, '群成员');
       if (res.list?.length) {
         let tmp = [];
         let userTmp = [];
@@ -62,7 +60,6 @@ export const initGroupMemberData = async (
       })
       .then(async res => {
         pages = parseInt(res?.count / page_size) + 1;
-        console.log(res.list, '群同步成员');
         if (res.list?.length) {
           let tmp = [];
           let userTmp = [];

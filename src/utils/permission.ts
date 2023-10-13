@@ -49,9 +49,6 @@ export const checkRecordAudio = async () => {
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
         PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
       ]);
-
-      console.log('write external stroage', grants);
-
       if (
         grants['android.permission.WRITE_EXTERNAL_STORAGE'] ===
           PermissionsAndroid.RESULTS.GRANTED &&
@@ -60,14 +57,10 @@ export const checkRecordAudio = async () => {
         grants['android.permission.RECORD_AUDIO'] ===
           PermissionsAndroid.RESULTS.GRANTED
       ) {
-        console.log('permissions granted');
       } else {
-        console.log('All required permissions not granted');
         const granted = await PermissionsAndroid.request(
           PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
         );
-        console.log('granted', granted);
-
         return;
       }
     } catch (err) {
@@ -100,7 +93,6 @@ export async function hasAndroidPermission() {
   };
 
   const hasPermission = await getCheckPermissionPromise();
-  console.log(hasPermission, 'hasPermission');
   if (hasPermission) {
     return true;
   }
@@ -122,8 +114,6 @@ export async function hasAndroidPermission() {
       ).then(status => status === PermissionsAndroid.RESULTS.GRANTED);
     }
   };
-  console.log(PermissionsAndroid.requestMultiple, 'PermissionsAndroid');
-
   return await getRequestPermissionPromise();
 }
 

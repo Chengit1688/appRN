@@ -17,7 +17,6 @@ const PinnedVideo: React.FC = () => {
       setWidth(Dimensions.get('screen').width);
     });
   });
-  console.log("PinnedVideo.tsx: PinnedVideo: rtcProps: ", rtcProps)
   return (
     <>
       <MaxUidConsumer>

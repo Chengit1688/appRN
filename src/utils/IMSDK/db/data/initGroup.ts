@@ -6,8 +6,6 @@ import {IMSDK} from '../../types';
 export const initGroupData = async (groupVersion: Array<any>) => {
   const {data} = await imsdk.comlink.getGroupVersionList();
   const localVersion = data;
-  console.log('localVersion=====>', localVersion, groupVersion);
-
   groupVersion.forEach(group => {
     imsdk.subscribeGroupChat(group.group_id);
     imsdk.subscribeGroups(group.group_id);
@@ -101,7 +99,6 @@ export const initGroupData = async (groupVersion: Array<any>) => {
     while (total > joinList.length) {
       const result: any = (await imsdk.getMyJoinedGroupList(page)) || {};
       if (!result.list) break;
-      console.log('当前加入的群组===>', result);
       // let tmp: any = [];
       const {data} = await imsdk.comlink.getDisabledConversation();
       const tmp = result.list.map(async (item: any, index: number) => {

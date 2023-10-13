@@ -11,8 +11,6 @@ interface RequestResponse {
  * @param
  */
 export function face2faceInvite(params: RequestParams) {
-  console.log('params', params);
-
   return post<RequestResponse>('/api/group/face2face_invite', params);
 }
 

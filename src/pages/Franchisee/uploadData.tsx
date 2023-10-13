@@ -54,7 +54,6 @@ export default function UploadData(props: any) {
         shop_id: params.shop_id,
       }).then((res: any) => {
         //由于之前from是分开设置的，每个单独设置下
-        console.log(res);
         const shopImg: {url: any}[] = [];
         _.map(res.image, (item, index) => {
           const obj = {

@@ -113,7 +113,6 @@ export const handleUpload = (
       }
 
       let _file = {uri: source, type: file[i].type, name: file[i].fileName};
-      console.log('source', source);
       if (checkIsImgType(source)) {
         fileType = 3;
       }
@@ -137,7 +136,6 @@ export const handleUpload = (
           imgData.push(obj);
         })
         .catch(err => {
-          console.log(err, 'err');
         })
         .finally(() => {
           state++;
@@ -170,17 +168,12 @@ export const ImagePickerUpload = ({
 
   const dealImage = (response: any) => {
     onCancel();
-    console.log('dealImages => ', response);
     if (response.didCancel) {
-      console.log('User cancelled image picker');
     } else if (response.errorCode) {
-      console.log('mage picker Error: ', response.errorCode);
       modalPermission({});
       return;
     } else if (response.errorMessage) {
-      console.log('User tapped errorMessage: ', response.errorMessage);
     } else if (response.assets) {
-      console.log(response.assets, '111');
       //上传图片
       //uploadV2()
       handleUpload(response.assets, () => {}, true).then(res => {
@@ -188,7 +181,6 @@ export const ImagePickerUpload = ({
       });
       // onSelect(response.assets)
     } else {
-      console.log('other data');
     }
   };
 

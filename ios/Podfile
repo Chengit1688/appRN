@@ -53,13 +53,16 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
+# source 'https://github.com/CocoaPods/Specs.git'
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+
 target 'mobileIM' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
   flags = get_default_flags()
 
-  use_react_native!(
+  use_react_native!( 
     :path => config[:reactNativePath],
     # Hermes is now enabled by default. Disable by setting this flag to false.
     # :hermes_enabled => flags[:hermes_enabled],

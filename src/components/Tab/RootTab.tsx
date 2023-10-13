@@ -41,7 +41,6 @@ const RootTab = () => {
   }, [remindCircle]);
 
   const noticeNums = useMemo(() => {
-    console.log(noticeCount, '12');
     const total = noticeCount.friendNotice + noticeCount.groupNotice;
     return total > 0 ? {tabBarBadge: total} : {};
   }, [noticeCount]);

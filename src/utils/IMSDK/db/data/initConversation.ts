@@ -33,7 +33,6 @@ export const initConversationData = async (serVersion?: string) => {
             pageSize: 10,
             page: page,
           });
-          console.log(result, '初始化服务端会话result');
           if (!result.list) break;
           page++;
           result.list = result.list.filter(
@@ -99,7 +98,6 @@ export const initConversationData = async (serVersion?: string) => {
                 be_operator_list: item.message?.be_operator_list,
               };
             } catch (e) {
-              console.log(e, 'e');
             }
           }
 
@@ -149,7 +147,6 @@ export const initConversationData = async (serVersion?: string) => {
 
       const serverData = _.keyBy(result, 'conversation_id');
       imsdk.emit(IMSDK.Event.CONVERSATION_LIST_UPDATED, result);
-      console.log(result, '初始化会话result');
       await imsdk.updateConversationList(result);
     });
 

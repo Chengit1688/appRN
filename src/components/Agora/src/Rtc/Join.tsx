@@ -15,13 +15,11 @@ const Join: React.FC<
 > = ({children, precall, engineRef, uidState, dispatch, joinState}) => {
   // let joinState = useRef(false);
   const {rtcProps} = useContext(PropsContext);
-  console.log(rtcProps, 'rtcProps===>');
 
   useEffect(() => {
     const engine = engineRef.current;
     async function leave() {
       try {
-        console.log('Leaving RTC channel');
         engine.leaveChannel();
         joinState.current = false;
       } catch (err) {
@@ -35,7 +33,6 @@ const Join: React.FC<
         rtcProps.encryption.key &&
         rtcProps.encryption.mode
       ) {
-        console.log('using channel encryption', rtcProps.encryption);
         await engine.enableEncryption(true, {
           encryptionKey: rtcProps.encryption.key,
           encryptionMode: rtcProps.encryption.mode,
@@ -64,7 +61,6 @@ const Join: React.FC<
             });
           })
           .catch(function (err) {
-            console.log('Fetch Error', err);
           });
       } else {
         await engine.joinChannel(
@@ -95,9 +91,7 @@ const Join: React.FC<
           await leave();
           await join();
         }
-        console.log('Attempted rtc join: ', rtcProps.channel);
       } else {
-        console.log('In precall - waiting to join');
       }
     }
     init();
@@ -117,7 +111,6 @@ const Join: React.FC<
 
   useEffect(() => {
     const handleActive = (connection: RtcConnection, uid: number) => {
-      console.log('speaker is ', uid);
       dispatch({type: 'ActiveSpeaker', value: [uid]});
     };
     let sub;

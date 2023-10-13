@@ -224,7 +224,6 @@ export abstract class MessageActionlet extends ConversationActionlet {
     conversation_id,
     conversation_type,
   ) {
-    console.log(msg_list, status, '====>');
     return this.post('/api/chat/message_change', {
       msg_id_list: msg_list.map(msg => msg.msg_id),
       // conversation_id,
@@ -330,7 +329,6 @@ export abstract class MessageActionlet extends ConversationActionlet {
         seq,
         pageSize,
       );
-      console.log('服务端拉取的数据', res);
       let seq_num = seq;
       if (res?.list && res?.list.length) {
         // res.list = res.list.filter(item => item.status !== 2)
@@ -380,7 +378,6 @@ export abstract class MessageActionlet extends ConversationActionlet {
           arr.push(messageEntity);
           // seq_num = item.seq - 1;
         });
-        console.log(arr, 'arr=======>');
         const newList = arr.reverse();
         list = newList.concat(list);
         await this.insertMessageList(newList);
@@ -480,12 +477,10 @@ export abstract class MessageActionlet extends ConversationActionlet {
           const newConv = Object.assign({}, currentConv);
           if (newConv.latest_message === msg.msg_id) {
             newConv.latest_message = '';
-            console.log('newConv==========>', newConv);
             await this.updateConversationById(newConv);
           }
         }
         const {data} = await this.comlink.getMessageByMsgId(msg);
-        console.log('删除data==========>', data, msg);
         await this.updateMessageById(data[0], {status: 3});
         msgData = data[0];
       }),
@@ -555,7 +550,6 @@ export abstract class MessageActionlet extends ConversationActionlet {
    * 更新消息是否收藏消息
    */
   async collectMessage(msg: IMSDK.Message, flag?: boolean) {
-    console.log(msg, flag);
     this.comlink.collectMessage(msg, flag);
   }
 

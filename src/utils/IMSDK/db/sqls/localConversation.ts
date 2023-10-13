@@ -365,7 +365,6 @@ export function insertConversation(db: any, conversation: IMSDK.Conversation) {
       .toString();
     return db.exec(sql.replace('INSERT', 'INSERT OR REPLACE'));
   } catch (e) {
-    console.log(e);
     return;
   }
 }

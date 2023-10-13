@@ -78,7 +78,6 @@ export const muteAudio = async (
       });
     }
   } else {
-    console.log('LocalMuteAudio in transition', local, ToggleState);
   }
 };
 

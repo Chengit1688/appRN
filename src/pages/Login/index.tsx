@@ -25,7 +25,6 @@ export default function LoginPage({navigation}: any) {
   const getSettingConfig = useRequest(settingConfig, {
     manual: true,
     onSuccess: (result: any, params) => {
-      console.log(result, '====>');
       if (result.login_config && result.login_config.mobile) {
         setLoginConfig(result.login_config.mobile);
         if (result.login_config.mobile.length === 1) {

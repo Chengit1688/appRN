@@ -3,6 +3,7 @@ import {View, TouchableOpacity, Icon, Assets} from 'react-native-ui-lib';
 import {useTranslation} from 'react-i18next';
 import {pt} from '@/utils/dimension';
 import imsdk, {IMSDK} from '@/utils/IMSDK';
+import ImagePicker from 'react-native-image-crop-picker';
 import Voice from './voice';
 import Photo from './photo';
 import Camera from './camera';
@@ -86,7 +87,15 @@ export default function Toolbar({
     switch (type) {
       case 'photo':
         //打开相册
+
+        // ImagePicker.openPicker({
+        //   multiple: true,
+        //   cropping: true,
+        // }).then(images => {
+        //   console.log(images);
+        // });
         selectPhotoTapped(false).then((res: any) => {
+          // console.log('res======>>>',res)
           for (let i = 0; i < res.length; i++) {
             setTimeout(() => {
               sendFileMessage(res[i], selfInfo, dispatch, currentConversation);

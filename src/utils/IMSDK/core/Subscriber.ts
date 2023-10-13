@@ -39,7 +39,6 @@ export class Subscriber extends Emitter {
         this.mqtt_client?.unsubscribe([
             `${this.station}/chat/single_${users.user_id_1}_${users.user_id_2}`,
         ], () => {
-            console.log('unsubscribe single chat topic success!=======>', `${this.station}/chat/single_${users.user_id_1}_${users.user_id_2}`);
         });
     }
 
@@ -56,7 +55,6 @@ export class Subscriber extends Emitter {
         this.mqtt_client?.unsubscribe([
             `${this.station}/chat/group_${group_id}`,
         ], () => {
-            console.log('unsubscribe group chat topic success!=======>', `${this.station}/chat/group_${group_id}`);
         });
     }
     // todo remove
@@ -81,7 +79,6 @@ export class Subscriber extends Emitter {
         this.mqtt_client?.unsubscribe([
             `${this.station}/groups/${group_id}`,
         ], () => {
-            console.log('unsubscribe groups topic success!=======>', `${this.station}/groups/${group_id}`);
         });
     }
 }

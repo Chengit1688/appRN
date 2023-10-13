@@ -100,7 +100,6 @@ export abstract class BaseActionlet extends SdkBase {
 
         resolve(this.handleResponse(res.data, config));
       } catch (e) {
-        console.log('http request err-----', e.message, config);
         toast.error(`${e.message}`);
         reject(e);
         throw new Error(e.message);
@@ -109,7 +108,6 @@ export abstract class BaseActionlet extends SdkBase {
   }
 
   protected get<T>(url: string, params?: any) {
-    console.log('params===>', JSON.stringify(params));
     return this.request<T>({
       url,
       params: {
@@ -121,7 +119,6 @@ export abstract class BaseActionlet extends SdkBase {
   }
 
   protected post<T>(url: string, data?: any) {
-    console.log('data===>', JSON.stringify(data));
     return this.request<T>({
       url,
       data: {

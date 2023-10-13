@@ -52,7 +52,6 @@ export default function Start() {
             if (e) {
               try {
                 imsdk.searchUser(e).then(res => {
-                  console.log(res);
                   navigate({
                     name: 'ContactAdd',
                     params: {id: res?.list?.[0]?.user_id},

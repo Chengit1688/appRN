@@ -52,7 +52,6 @@ export default function Record() {
       page: pagination.page,
       page_size: pagination.page_size,
     }).then((res: any) => {
-      console.log(res);
       const newList = res?.list.concat(list);
       if (newList.length >= res?.count) {
         setEnd(true);

@@ -414,7 +414,6 @@ export default function Member(props) {
                     setAdminList([...adminList, current]);
 
                     const newList = list.map((item: any) => {
-                      console.log(item, '====>11');
                       return {
                         ...item,
                         role:
@@ -601,7 +600,6 @@ export default function Member(props) {
                       ),
                     );
                     const newList = list.map((item: any) => {
-                      console.log(item, '取消管理员');
                       return {
                         ...item,
                         role:

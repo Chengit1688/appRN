@@ -70,7 +70,6 @@ export abstract class SdkBase extends Subscriber {
   }
 
   public login(params: LoginParams) {
-    console.log('login params', params);
     this.user_id = params.user_id;
     this.token = params.token;
     if (this.mqtt_client) return Promise.resolve();

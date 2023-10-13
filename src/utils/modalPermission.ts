@@ -24,7 +24,6 @@ export default function modalPermission({
             Linking.openURL('app-settings:');
           } else {
             NativeModules.OpenSettings.openNetworkSettings((data: any) => {
-              console.log('_____call back data', data);
             });
           }
         },

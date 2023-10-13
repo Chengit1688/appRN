@@ -81,7 +81,6 @@ export default function ChatVoice(row: any, isOwn: boolean) {
       try {
         audioRecorderPlayer.startPlayer(uri);
       } catch (error) {
-        console.log(error, 'error');
       }
       Object.keys(data).forEach((item: any) => {
         data[item] = item === id ? true : false;
@@ -155,9 +154,7 @@ export default function ChatVoice(row: any, isOwn: boolean) {
       const index = currentMessageList.findIndex(i => i.msg_id === msg_id);
 
       const deepCloneMsg = JSON.parse(JSON.stringify(currentMessageList));
-      console.log(index, deepCloneMsg, '===>deepCloneMsg1111');
       deepCloneMsg.splice(index, 1);
-      console.log(index, deepCloneMsg, '===>deepCloneMsg2222');
       dispatch(
         updateCurrentMessageList({
           data: deepCloneMsg,

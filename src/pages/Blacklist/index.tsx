@@ -26,7 +26,6 @@ export default function Contacts() {
         setLoading(false);
       })
       .catch(res => {
-        console.log(res);
       });
   };
 

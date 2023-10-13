@@ -269,7 +269,6 @@ export default function UserIndex(props: any) {
         setList(formatList);
       })
       .catch(err => {
-        console.log(err, 'erer');
         changeEndStatus(true);
       })
       .finally(() => {

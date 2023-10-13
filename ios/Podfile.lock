@@ -595,6 +595,9 @@ PODS:
     - TOCropViewController
   - RNPermissions (3.9.1):
     - React-Core
+  - RNQrGenerator (1.3.1):
+    - React
+    - ZXingObjC
   - RNReanimated (3.4.2):
     - DoubleConversion
     - FBLazyVector
@@ -645,6 +648,9 @@ PODS:
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
+  - ZXingObjC (3.6.9):
+    - ZXingObjC/All (= 3.6.9)
+  - ZXingObjC/All (3.6.9)
 
 DEPENDENCIES:
   - agora-react-native-rtm (from `../node_modules/agora-react-native-rtm`)
@@ -744,6 +750,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
+  - RNQrGenerator (from `../node_modules/rn-qr-generator`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNShare (from `../node_modules/react-native-share`)
@@ -778,6 +785,7 @@ SPEC REPOS:
     - SocketRocket
     - TOCropViewController
     - YogaKit
+    - ZXingObjC
 
 EXTERNAL SOURCES:
   agora-react-native-rtm:
@@ -928,6 +936,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-image-crop-picker"
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
+  RNQrGenerator:
+    :path: "../node_modules/rn-qr-generator"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -1036,6 +1046,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
   RNImageCropPicker: 486e2f7e2b0461ce24321f751410dce1b3b49e6d
   RNPermissions: 4843158d1c198288ad277d356f3d3af5fc6e864d
+  RNQrGenerator: 90461ba3ca88c1d38ef73da50fade35d9648215d
   RNReanimated: f8379347f71248607d530a21e31e4140c5910c25
   RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
   RNShare: 32e97adc8d8c97d4a26bcdd3c45516882184f8b6
@@ -1047,7 +1058,8 @@ SPEC CHECKSUMS:
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   Yoga: 1d6727ed193122f6adaf435c3de1a768326ff83b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
+  ZXingObjC: 8898711ab495761b2dbbdec76d90164a6d7e14c5
 
-PODFILE CHECKSUM: 6c3c78ea59d5ed622ac2b2d90269b63cf8e4f555
+PODFILE CHECKSUM: 8fe08ab61916389a8520af5ae62e452df87fd79c
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.13.0

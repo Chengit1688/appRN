@@ -38,7 +38,6 @@ export function insertMassSendMsg(db: any, message: any) {
       .into('mass_send')
       .setFields(message)
       .toString();
-      console.log('sql========>', sql)
   return db.exec(sql.replace('INSERT', 'INSERT OR REPLACE'));
 }
 

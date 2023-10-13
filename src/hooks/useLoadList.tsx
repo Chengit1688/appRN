@@ -15,7 +15,6 @@ export default function useLoadList(getList: any, options?: any) {
       try {
         setLoading(true);
         const res = await getList({page, page_size});
-        console.log('res12', res);
         const dataList = res?.list || res?.data || [];
         if (page === 1) {
           setList(dataList);

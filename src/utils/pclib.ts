@@ -18,7 +18,6 @@ export let isPc = () => {
 };
 
 export async function updatePcIcon(number, opts) {
-  console.log('更新数量', number);
   // const {ipcRenderer} = require('electron')
   if (!isPc()) return;
 
@@ -29,7 +28,6 @@ export async function updatePcIcon(number, opts) {
   // ipcRenderer.sendSync('update-badge', number);
 
   if (!window['__TAURI__']) return;
-  console.log('更新数量2');
   let {path, fs, tauri} = window['__TAURI__'];
   let {appWindow} = window['__TAURI__'].window;
 
@@ -48,7 +46,6 @@ export async function updatePcIcon(number, opts) {
   let resourceDir = await path.resourceDir();
   const filePath = await path.join(resourceDir, 'assets', 'icon.png');
   const assetUrl = tauri.convertFileSrc(filePath);
-  console.log('更新数量', assetUrl);
   iconImg.src = assetUrl;
 
   // 获取画布对象
@@ -91,7 +88,6 @@ export async function updatePcIcon(number, opts) {
     ctx.fillText(number + '', (canvas.width * 3) / 4, canvas.height / 4);
   }
   canvas.toBlob(res => {
-    console.log('更新数量5', res);
     if (res) {
       res.arrayBuffer().then(async res => {
         const fname = 'cc_icon.png';

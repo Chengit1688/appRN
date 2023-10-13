@@ -123,7 +123,6 @@ export const conversationState = createSlice({
       state,
       action: PayloadAction<IMSDK.Conversation['conversation_id']>,
     ) {
-      console.log(action.payload, '====>state===>');
       const preConversationId = state.currentConversation?.conversation_id;
       // console.log(checkoutConversation,'checkoutConversation')
 
@@ -134,7 +133,6 @@ export const conversationState = createSlice({
       const conversation = state.conversationList.find(
         conv => conv.conversation_id === action.payload,
       );
-      console.log(conversation, '===>conversation');
       if (conversation) {
         state.currentConversation = conversation;
       } else {
@@ -190,7 +188,6 @@ export const conversationState = createSlice({
     updateSettingInfo: (state, action: PayloadAction<any>) => {
       if (action.payload) {
         const data = action.payload;
-        console.log(data, '=====>updateSetting');
         if (
           data?.muteUserList?.length &&
           state.settingInfo?.muteUserList?.length

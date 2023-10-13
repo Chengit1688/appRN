@@ -187,7 +187,6 @@ export default function Chat() {
   };
 
   const conv = currentConversation;
-  console.log('conv==>', conv);
   const info =
     conv?.type === 1
       ? conv?.user || {}
@@ -713,6 +712,7 @@ export default function Chat() {
                     activeOpacity={0.8}
                     label={t('发送')}
                     onPress={async () => {
+                      console.log('点击了发送')
                       if (inputVal !== undefined && inputVal.trim().length) {
                         const val = inputVal.trim();
                         if (val && quoteContent) {

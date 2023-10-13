@@ -46,7 +46,6 @@ export default function RedPacketDetail({route}: {route: any}) {
         operation_id: new Date().getTime().toString(),
       })
         .then(res => {
-          console.log(res, '====>单聊红包');
           setDetail(res);
         })
         .finally(() => {
@@ -60,7 +59,6 @@ export default function RedPacketDetail({route}: {route: any}) {
         group_id,
       })
         .then(res => {
-          console.log(res, '====>群红包');
           setDetail(res);
         })
         .finally(() => {

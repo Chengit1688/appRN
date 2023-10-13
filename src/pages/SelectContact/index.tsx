@@ -51,8 +51,6 @@ export default function SelectContact(props: any) {
           disabledSelecteds={disabledSelecteds}
           showSelect={true}
           onSelected={e => {
-            console.log(e);
-
             setSelecteds(e);
           }}
           selecteds={selecteds}

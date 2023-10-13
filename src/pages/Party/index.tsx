@@ -82,7 +82,6 @@ export default function PartyIndex(props: any) {
       extensions: 'all',
     };
     getGeocodeRegeo(params).then((res: any) => {
-      console.log('获取地理位置', res, '获取地理位置');
       setCityCode(res.regeocode.addressComponent.citycode);
       // changeAddress(
       //   `${res.regeocode.addressComponent.city}${
@@ -254,7 +253,6 @@ export default function PartyIndex(props: any) {
         }
         ref={mapViewRef}
         onLocation={({nativeEvent}) => {
-          console.log('地图定位更新===>', nativeEvent);
         }}>
         {/* <Cluster
           points={list}

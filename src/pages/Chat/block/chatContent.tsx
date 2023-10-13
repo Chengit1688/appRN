@@ -238,12 +238,10 @@ function ChatMessage(props) {
       setPopVisible(false);
       message.success('复制成功');
     } catch (e) {
-      console.log(e);
       message.error('复制失败');
     }
   };
   const saveImg = async content => {
-    console.log(content);
     let images: any = document.getElementsByClassName('ant-image-img');
     let tagImg = null;
     try {

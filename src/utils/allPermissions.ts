@@ -22,23 +22,19 @@ export const checkMultiplePermissions = async () => {
       //相机权限
       if (statuses[PERMISSIONS.IOS.CAMERA] !== RESULTS.GRANTED) {
         request(PERMISSIONS.IOS.CAMERA).then(statuses => {
-          console.log(statuses);
         });
       }
 
       if (statuses[PERMISSIONS.IOS.PHOTO_LIBRARY] !== RESULTS.GRANTED) {
         request(PERMISSIONS.IOS.PHOTO_LIBRARY).then(statuses => {
-          console.log(statuses);
         });
       }
       if (statuses[PERMISSIONS.IOS.MICROPHONE] !== RESULTS.GRANTED) {
         request(PERMISSIONS.IOS.MICROPHONE).then(statuses => {
-          console.log(statuses);
         });
       }
       if (statuses[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] !== RESULTS.GRANTED) {
         request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE).then(statuses => {
-          console.log(statuses);
         });
       }
     });

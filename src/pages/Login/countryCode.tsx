@@ -21,8 +21,6 @@ export default function countryCode(props: any) {
   const {country_code, setCountryCode, setPhoneNumber, phone_number} = props;
 
   const hanleSetCountryCode = (value: any) => {
-    console.log('value', value);
-
     // getCountryCode(value);
   };
   // const hanleGetPhoneNumber = (value: any) => {

@@ -21,7 +21,6 @@ const localStorage = AsyncStorage;
 export abstract class IMActionlet extends BaseActionlet {
   /* @ts-ignore */
   private async initComlink() {
-    console.log('this.user_id===>', this.user_id);
 	let inited = false;
     this.comlink.init(this.user_id, 'web_chat').then(async () => {
 		if(inited) {

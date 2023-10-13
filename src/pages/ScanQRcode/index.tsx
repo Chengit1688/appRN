@@ -15,12 +15,12 @@ import {
 } from 'react-native';
 import {Toast} from '@ant-design/react-native';
 import {RNCamera} from 'react-native-camera';
-// import LocalBarcodeRecognizer from '@arlenwang/react-native-local-barcode-recognizer';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import LocalBarcodeRecognizer from 'react-native-local-barcode-recognizer';
+import RNQRGenerator from 'rn-qr-generator';
 import ImagePicker from 'react-native-image-crop-picker';
 import imsdk from '@/utils/IMSDK';
 import {selectPhotoTapped} from '@/components/ImagePickUpload/photoCamera';
+import { decode, encode } from '@/utils/common';
 
 // class Base64 {
 //   decode(str: string): string {
@@ -89,7 +89,6 @@ export default function QRCodeScanner({navigation}: any) {
     if (!scanned) {
       setScanned(true);
       const _d = formatURLParametersToJSON(result);
-      console.log('_d', _d);
       if (_d.name && _d.name === 'frandchisee') {
         //跳转到加盟商
         navigation.replace(_d.name, {..._d});
@@ -113,7 +112,6 @@ export default function QRCodeScanner({navigation}: any) {
   //扫码成功的回调函数
   const handleBarcodeScanned = ({data}: any) => {
     commonScan(data);
-    // console.log('外面的data====>', data);
   };
 
   const resetScanner = () => {
@@ -131,18 +129,20 @@ export default function QRCodeScanner({navigation}: any) {
   };
 
   const _handleImage = image => {
-    console.log('image===>>>>', image);
     if (image.data) {
-      recoginze(image.data);
+      recoginze(image);
     }
   };
+
   const recoginze = async data => {
-    let result = await LocalBarcodeRecognizer.decode(
-      data.replace('data:image/jpeg;base64,', ''),
-      {codeTypes: ['ean13', 'qr']},
-    );
-    commonScan(result);
-    // alert('识别结果：' + result);
+    RNQRGenerator.detect({uri:data.uri})
+    .then((res) => {
+      const arr = res.values;
+      commonScan(arr[0]);
+    })
+    .catch((err) => {
+      Toast.show('无效二维码')
+    });
   };
 
   return (
@@ -200,15 +200,15 @@ export default function QRCodeScanner({navigation}: any) {
           style={styles.btnView}
           // activeOpacity={0.8}
           onPress={() => {
-            _pickerImg();
-            // selectPhotoTapped(false, {
-            //   selectionLimit: 1,
-            // }).then(async (res: any) => {
-            //   const dataStr = res[0].base64;
-            //   // const baseStr = new Base64();
-            //   // const str = baseStr.decode(dataStr);
-            //   console.log('str===>>>', res);
-            // });
+            // _pickerImg();
+            selectPhotoTapped(false, {
+              selectionLimit: 1,
+            }).then(async (res: any) => {
+              recoginze(res[0]);
+              // const dataStr = res[0].base64;
+              // const baseStr = new Base64();
+              // const str = baseStr.decode(dataStr);
+            });
           }}>
           <Image
             source={require('../../assets/imgs/picIcon2.png')}

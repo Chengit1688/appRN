@@ -13,7 +13,6 @@ import PropsContext from '../Contexts/PropsContext';
 import {ClientRoleType} from 'react-native-agora';
 
 const layout = (len: number, isDesktop: boolean = true) => {
-  console.log('layout');
   const rows = Math.round(Math.sqrt(len));
   const cols = Math.ceil(len / rows);
   let [r, c] = isDesktop ? [rows, cols] : [cols, rows];

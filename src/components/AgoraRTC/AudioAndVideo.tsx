@@ -40,7 +40,6 @@ Sound.setCategory('Playback'); // 设置音频播放类型
 
 const soundCall = new Sound(callMp3, error => {
   if (error) {
-    console.log('Error loading sound:', error);
   } else {
     soundCall.setNumberOfLoops(-1); // 设置循环播放
   }
@@ -48,7 +47,6 @@ const soundCall = new Sound(callMp3, error => {
 
 const soundEnd = new Sound(off, error => {
   if (error) {
-    console.log('Error loading sound:', error);
   }
 });
 
@@ -136,7 +134,6 @@ const AudioAndVideo = (props: any) => {
     }
   }, 1000);
   useEffect(() => {
-    console.log(props.info, 'props.info');
     soundCall.play();
 
     setUsername(currentConversation?.user?.remark || props?.user?.nick_name);
@@ -230,7 +227,6 @@ const AudioAndVideo = (props: any) => {
           }}
           activeOpacity={1}
           onPress={() => {
-            console.log('点击了');
             setFull(false);
           }}>
           <Image

@@ -27,7 +27,6 @@ export default function UserAgreement() {
       });
   }, []);
   const handleMessage = (event: any) => {
-    console.log(event.nativeEvent.data, '获取接收数据');
     setWebViewHeight(+event.nativeEvent.data + 250);
   };
 

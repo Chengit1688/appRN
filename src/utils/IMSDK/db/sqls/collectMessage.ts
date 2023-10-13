@@ -76,7 +76,6 @@ export function searchCollectMessageByContent(
       .where(`content like '%${keyword}%'`)
       .toString();
   }
-  console.log(sql, 'sql-----');
   return db.exec(sql);
 }
 
@@ -139,7 +138,6 @@ export function insertCollectMessage(db: any, message: any) {
     .into('collectmessage_list')
     .setFields(message)
     .toString();
-  console.log(sql, 'sql--------');
   return db.exec(sql.replace('INSERT', 'INSERT OR REPLACE'));
 }
 

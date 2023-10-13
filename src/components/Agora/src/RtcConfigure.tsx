@@ -160,13 +160,8 @@ const RtcConfigure: React.FC<
     if (callbacks && callbacks[action.type]) {
       // @ts-ignore
       callbacks[action.type].apply(null, action.value);
-      console.log('callback executed');
     } else {
-      // console.log('callback not found', action.type);
     }
-
-    // console.log(state, action, stateUpdate);
-
     return {
       ...state,
       ...stateUpdate,

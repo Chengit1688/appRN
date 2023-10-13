@@ -64,7 +64,6 @@ export default function ForgotPassword() {
     const getVerificationCode = useRequest(verificationCode, {
       manual: true,
       onSuccess: (result: any) => {
-        console.log('result========>', result);
         setTime(60);
       },
     });

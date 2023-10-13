@@ -19,7 +19,6 @@ export default function GlobalToUserAudio() {
     shallowEqual,
   );
   const [user, setUser] = useState({});
-  console.log(receivedData, '===>receivedData');
   useEffect(() => {
     if (
       Object.keys(receivedData).length > 0 &&

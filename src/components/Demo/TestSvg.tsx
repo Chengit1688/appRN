@@ -34,7 +34,6 @@ const TestSvg = (props: any) => {
 
   const [loading, setLoading] = useState(true);
   const onError = (e: Error) => {
-    console.log(e.message);
     setLoading(false);
   };
   const onLoad = () => {

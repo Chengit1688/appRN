@@ -26,7 +26,6 @@ export default function VideoModal({
     setIsLoading(false);
     setDuration(Math.floor(data.duration));
   };
-  console.log('点击退出视频123123');
   return (
     <Modal
       style={styles.viewModal}
@@ -64,13 +63,11 @@ export default function VideoModal({
           onProgress={data => {
             if (!isLoading) {
               // handleSetCurrentTime(data);
-              console.log('data.currentTime', data);
               setCurrentTime(data.currentTime);
             }
           }}
           progressUpdateInterval={1000}
           onBuffer={() => {
-            console.log('视频缓冲中');
             // setIsLoading(false);
           }}
           onError={() => {}}

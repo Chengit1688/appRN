@@ -150,7 +150,6 @@ export async function getMessageById(id: string) {
   try {
     const db = await getInstance();
     const execResult = await getMessageByIdLocal(db, id);
-    console.log('execResult===>', execResult);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
     console.error(e);

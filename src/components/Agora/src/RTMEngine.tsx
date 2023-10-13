@@ -22,12 +22,10 @@ class RTMEngine {
     try {
       await this.engine?.logout();
     } catch (error) {
-      console.log('Error logout: ', error);
     }
     try {
       await this.engine?.release();
     } catch (error) {
-      console.log('Error release: ', error);
     }
   }
 
@@ -60,10 +58,8 @@ class RTMEngine {
         this.destroyClientInstance();
         RTMEngine._instance = null;
       } else {
-        console.log('destroy called but no instance');
       }
     } catch (error) {
-      console.log('Error destroying instance error: ', error);
     }
   }
 }

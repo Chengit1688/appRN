@@ -84,8 +84,6 @@ export default function Menu() {
                 cols={1}
                 value={privacyData?.is_show_online_time}
                 onChange={e => {
-                  console.log(e);
-
                   setData({
                     is_show_online_time: e[0],
                   });

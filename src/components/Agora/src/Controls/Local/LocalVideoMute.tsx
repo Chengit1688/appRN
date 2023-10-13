@@ -79,7 +79,6 @@ export const muteVideo = async (
       });
     }
   } else {
-    console.log('LocalMuteVideo in transition', local, ToggleState);
   }
 };
 

@@ -19,7 +19,6 @@ const SwitchAudioType: React.FC = () => {
   const [speaker, setSpeaker] = useState(true);
 
   const localUser = useContext(LocalContext);
-  console.log('localUser', localUser);
   return (
     <BtnTemplate
       name={speaker ? 'speaker' : 'receiver'}
@@ -53,7 +52,6 @@ export const muteAudioType = async (
       });
     }
   } else {
-    console.log('LocalMuteAudio in transition', local, ToggleState);
   }
 };
 

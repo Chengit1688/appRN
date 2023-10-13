@@ -37,10 +37,7 @@ const Create: React.FC<{
         await requestCameraAndAudioPermission();
       }
       try {
-        console.log('hello');
         engine.current = createAgoraRtcEngine();
-        console.log('hello2');
-        console.log(engine.current);
         if (Platform.OS === 'android' || Platform.OS === 'ios') {
           engine.current.initialize({
             appId: rtcProps.appId,
@@ -93,12 +90,8 @@ const Create: React.FC<{
          * The following condition allows enableVideo API to run in all the conditions
          * except when mode is livestreaming && user is attendee && running on web,
          * thereby not asking permissions and not creating tracks for attendees
-         */
-
-        console.log(rtcProps.mode,rtcProps.role,'mode and role')
-        
+         */        
         if(rtcProps.enableVideo === false){
-          console.log('enableAudio')
             await engine.current.enableAudio();
             isVideoEnabledRef.current = true
         } else if (
@@ -112,7 +105,6 @@ const Create: React.FC<{
         ) {
         
           try {
-            console.log("engine.current",engine.current)
             await engine.current.enableVideo();
             isVideoEnabledRef.current = true;
           } catch (e) {
@@ -134,9 +126,7 @@ const Create: React.FC<{
             rtcUidRef.current = connection.localUid;
             setRtcChannelJoined(true);
             //Invoke the callback
-            console.log('UIkit enabling dual stream', rtcProps.dual);
             if (rtcProps.dual) {
-              console.log('UIkit enabled dual stream');
               await engine.current!.enableDualStreamMode(rtcProps.dual);
               // await engine.current.setRemoteSubscribeFallbackOption(1);
             }
@@ -147,7 +137,6 @@ const Create: React.FC<{
         );
 
         engine.current.addListener('onLeaveChannel', async () => {
-          console.log('leave rtc channel');
           setRtcChannelJoined(false);
         });
 
@@ -175,7 +164,6 @@ const Create: React.FC<{
         });
 
         engine.current.addListener('onError', (e) => {
-          console.log('Error: ', e);
         });
 
         if (rtcProps.tokenUrl) {
@@ -183,7 +171,6 @@ const Create: React.FC<{
             'onTokenPrivilegeWillExpire',
             (...args) => {
               const UID = rtcProps.uid || 0;
-              console.log('TokenPrivilegeWillExpire: ', args, UID);
               fetch(
                 `${rtcProps.tokenUrl}/rtc/${rtcProps.channel}/publisher/uid/${UID}`,
               )
@@ -193,7 +180,6 @@ const Create: React.FC<{
                   });
                 })
                 .catch(function (err) {
-                  console.log('Fetch Error', err);
                 });
             },
           );
@@ -226,7 +212,6 @@ const Create: React.FC<{
           engine.current.release();
         }
       } catch (e) {
-        console.log('release error', e);
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

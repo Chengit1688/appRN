@@ -37,8 +37,6 @@ export abstract class ConversationActionlet extends UserActionlet {
    * @param conv_id conversation id
    */
   async getMessageList(data: {conv_id: string; seq: number}) {
-    console.log(data);
-
     return Promise.resolve([]);
   }
 

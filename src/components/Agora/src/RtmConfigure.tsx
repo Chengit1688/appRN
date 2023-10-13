@@ -55,7 +55,6 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
 
   const login = async () => {
     const {tokenUrl} = rtcProps;
-    console.log('Login to RTM');
     if (tokenUrl) {
       try {
         const res = await fetch(
@@ -68,7 +67,6 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
           serverToken,
         );
       } catch (error) {
-        console.log('login error tokenUrl', error);
       }
     } else {
       try {
@@ -76,18 +74,15 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
           rtmProps?.uid || String(rtcUidRef.current),
         );
       } catch (error) {
-        console.log('login error', error);
       }
     }
     setRtmStatus(rtmStatusEnum.loggedIn);
   };
 
   const joinChannel = async () => {
-    console.log('join RTM channel', rtcProps.channel);
     try {
       await rtmEngineRef.current?.joinChannel(rtcProps.channel);
     } catch (error) {
-      console.log('joinChannelError:', error);
     }
 
     setUsernames((p) => {
@@ -103,17 +98,11 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
     rtmEngineRef.current.addListener(
       'ConnectionStateChanged',
       (state, reason) => {
-        console.log(
-          'ConnectionStateChanged',
-          RtmConnectionState[state],
-          ConnectionChangeReason[reason],
-        );
       },
     );
 
     rtmEngineRef.current.addListener('TokenExpired', async () => {
       const {tokenUrl} = rtcProps;
-      console.log('token expired - renewing');
       if (tokenUrl) {
         try {
           const res = await fetch(
@@ -129,20 +118,17 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
     });
 
     rtmEngineRef.current.addListener('MessageReceived', (message, peerId) => {
-      // console.log('MessageReceived', peerId);
       handleReceivedMessage(message as RtmMessage, peerId);
     });
 
     rtmEngineRef.current.addListener(
       'ChannelMessageReceived',
       (message, member) => {
-        // console.log('ChannelMessageReceived', member.userId);
         handleReceivedMessage(message as RtmMessage, member.userId);
       },
     );
 
     rtmEngineRef.current.addListener('ChannelMemberJoined', async (peerId) => {
-      // console.log('ChannelMemberJoined', peerId.userId);
       await sendPeerMessage(createUserData(), peerId.userId);
     });
 
@@ -162,7 +148,6 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
     if (rtcProps.tokenUrl) {
       const {tokenUrl, uid} = rtcProps;
       rtmEngineRef.current.addListener('TokenExpired', async () => {
-        console.log('token expired');
         const res = await fetch(tokenUrl + '/rtm/' + (uid || 0) + '/');
         const data = await res.json();
         const token = data.rtmToken;
@@ -206,12 +191,9 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
     };
     const peerId = uidMap[rtcId];
     if (forced && !mute) {
-      console.log('cannot send force unmute request');
     } else if (peerId) {
-      console.log('sendMuteRequest', rtcId, peerId);
       sendPeerMessage(payload, peerId);
     } else {
-      console.log('peer not found');
     }
   };
 
@@ -220,9 +202,7 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
     peerId: RtmChannelMember['userId'],
   ) => {
     const payload = (message as RtmMessage).text;
-    // console.log('message', message, payload);
     const messageObject: messageObjectType = JSON.parse(payload);
-    // console.log('handleReceivedMessage', messageObject, peerId);
     switch (messageObject.messageType) {
       case 'UserData':
         handleReceivedUserDataMessage(messageObject);
@@ -239,11 +219,9 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
             handleUserDataRequest(peerId);
             break;
           default:
-            console.log(peerId);
         }
         break;
       default:
-        console.log('unknown message type');
     }
   };
 
@@ -260,7 +238,6 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
   };
 
   const handleReceivedMuteMessage = (muteRequest: muteRequestType) => {
-    // console.log('gotMuteRequest', muteRequest);
     if (rtcUidRef.current === muteRequest.rtcId) {
       if (muteRequest.isForceful) {
         if (muteRequest.mute) {
@@ -306,7 +283,6 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
     try {
       await rtmEngineRef.current?.sendMessage(rtcProps.channel, message, {});
     } catch (e) {
-      console.log('sendMessage', e);
     }
   };
 
@@ -321,7 +297,6 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
     try {
       await rtmEngineRef.current?.sendMessageToPeerV2(peerId, message, {});
     } catch (e) {
-      console.log('sendMessageToPeerV2', e);
     }
   };
 
@@ -330,9 +305,7 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
       await rtmEngineRef.current?.leaveChannel(rtcProps.channel);
       rtmEngineRef.current?.removeAllListeners();
       setLogin(false);
-      console.log('RTM cleanup done');
     } catch (e) {
-      console.log(e);
     }
   };
 

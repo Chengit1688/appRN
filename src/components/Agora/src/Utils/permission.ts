@@ -15,9 +15,7 @@ export default async function requestCameraAndAudioPermission() {
       granted['android.permission.CAMERA'] ===
         PermissionsAndroid.RESULTS.GRANTED
     ) {
-      console.log('You can use the cameras & mic');
     } else {
-      console.log('Permission denied');
     }
   } catch (err) {
     console.warn(err);

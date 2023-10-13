@@ -33,7 +33,6 @@ export default function InKindDialog({
   details: any;
 }) {
   const {t} = useTranslation();
-  console.log(details, 'awardDetails');
   const [form, setForm] = React.useState<any>({
     mobile: '',
     user_name: '',

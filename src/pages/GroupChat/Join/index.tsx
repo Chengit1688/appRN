@@ -31,7 +31,6 @@ export default function Join(props) {
         operation_id: `${Date.now()}`,
       })
         .then(res => {
-          console.log('res', res);
           setUser(res?.users || []);
         })
         .catch(res => {});

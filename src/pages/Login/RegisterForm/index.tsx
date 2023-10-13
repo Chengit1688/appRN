@@ -160,7 +160,6 @@ export default function RegisterForm(props: any) {
   const handleRegister = useRequest(userRegister, {
     manual: true,
     onSuccess: (result: any) => {
-      console.log('result========>', result);
       if (result) {
         dispatch(setSelfInfo({user_id: result.user_id}));
         setToken(result.token);
@@ -332,7 +331,6 @@ const VerifyCodeBtn = (props: any) => {
   const getVerificationCode = useRequest(verificationCode, {
     manual: true,
     onSuccess: result => {
-      console.log('result========>', result);
       setTime(60);
     },
   });
@@ -343,7 +341,6 @@ const VerifyCodeBtn = (props: any) => {
   }, [time]);
 
   const getCode = () => {
-    console.log(country_code, '123');
     if (!phone_number) {
       Toast.info('请输入手机号');
       return;

@@ -101,7 +101,7 @@ export default function Provider({children}: any) {
 
   // 收到消息
   function onMessageRecieve(msgs: IMSDK.Message[]) {
-    console.log(msgs, '收到的消息');
+    // console.log(msgs, '收到的消息');
   }
 
   // 更新联系人
@@ -144,7 +144,6 @@ export default function Provider({children}: any) {
         });
         await imsdk.deleteConversation(`${user_id_1}_${user_id_2}`);
       });
-      console.log(convers, 'convers===>');
       state.friendList.map(id => {
         dispatch(
           removeConversationItem({
@@ -342,7 +341,6 @@ export default function Provider({children}: any) {
     setNoticeCountStatus(true);
   }
   function newGroupApply(state) {
-    console.log('新入群申请=====>', state);
     setNoticeGroupStatus(true);
   }
   // 获取是否还有待审核的群
@@ -416,7 +414,6 @@ export default function Provider({children}: any) {
           let total = Number.MAX_VALUE;
           let page = 1;
           while (total > conversationList.length) {
-            console.log(max_version, 'max_version');
             const result: any = await imsdk.fetchConversationList({
               version: max_version,
               pageSize: 10,
@@ -425,7 +422,6 @@ export default function Provider({children}: any) {
             if (!result.list) {
               break;
             }
-            console.log(result, 'result');
             page++;
             result.list = result.list.filter(
               i => i.id && !i.deleted_at && !!i.message,
@@ -656,7 +652,6 @@ export default function Provider({children}: any) {
 
   // 群配置更新
   const onGroupInfoUpdate = async (state: any) => {
-    console.log('群配置更新=====>', state);
     const res = await imsdk.comlink.getGroupById(state.group_id);
     if (!res?.data) return;
     const {data} = res;
@@ -701,7 +696,6 @@ export default function Provider({children}: any) {
     const g = await imsdk.comlink.getGroupList();
     if (g?.data?.length) dispatch(setGroupList(g.data));
     if (currentConversation?.conversation_id === group_id) {
-      console.log('=====>更新当前群会话');
       //更新当前群会话
       dispatch(
         updateSettingInfo({
@@ -722,19 +716,14 @@ export default function Provider({children}: any) {
 
   //群聊@消息
   const handleGroupAtInfo = (data: any) => {
-    console.log(currentConversation, data, '@群消息');
     if (currentConversation?.conversation_id === data.conversation_id) return;
     // 设置会话列表@消息
     dispatch(setConversationAtList(data));
   };
 
   useEffect(() => {
-    console.log(123);
-
     if (isReady && isConnected && token) {
-      console.log(321);
       getApplyNums();
-
       dispatch(getSettingConfig());
       // getConversationList();
     }
@@ -813,7 +802,6 @@ export default function Provider({children}: any) {
       onFriendUpdate({friendList: [data.user_id], type: 2});
     }); //删除好友
     imsdk.on(IMSDK.dataType.MessageFniendAddNotify, async data => {
-      console.log('好友通过通知=====>', data);
       //好友通过通知
       await imsdk.comlink.insertUserList([
         {
@@ -861,7 +849,6 @@ export default function Provider({children}: any) {
         }
         return item;
       });
-      console.log('temp=======>', temp);
       dispatch(setFriendList(temp));
       let temp2 = JSON.parse(
         JSON.stringify(store.getState().conversation.conversationList),
@@ -899,7 +886,6 @@ export default function Provider({children}: any) {
       dispatch(setRemindCiircle(newData));
     };
     const handleRemindLike = (data: any) => {
-      console.log('点赞推送====>', data, 'data');
       const newData = {
         ...data,
         type: '702',

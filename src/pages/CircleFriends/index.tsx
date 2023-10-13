@@ -140,7 +140,6 @@ export default function Index(props: any) {
         setList(newList);
       })
       .catch(err => {
-        console.log(err, 'erer');
         changeEndStatus(true);
       })
       .finally(() => {

@@ -57,7 +57,6 @@ export async function getCollectMessageById(id: string) {
   try {
     const db = await getInstance();
     const execResult = await getMessageByIdLocal(db, id);
-    console.log('execResult===>', execResult);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
     console.error(e);
@@ -82,7 +81,6 @@ export async function searchCollectMessageByContent(
       type,
       isFile,
     );
-		console.log(execResult, 'searchMessageByContentLocal execResult-----')
     return formatResponse(converSqlExecResult(execResult, 'SnakeCase', []));
   } catch (e) {
     console.error(e);

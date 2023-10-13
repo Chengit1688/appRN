@@ -21,7 +21,6 @@ const UserProfile = () => {
     getWallet({
       operation_id: new Date().getTime().toString(),
     }).then(res => {
-      console.log(res, '钱包');
       setDetail(res);
     });
   }, []);

@@ -18,8 +18,6 @@ export const client = axios.create({
 });
 
 function handleError(error: AxiosError) {
-  console.log('error', error);
-
   const {code} = error;
   if (code === 'ECONNABORTED') {
     // TODO
@@ -37,13 +35,12 @@ client.interceptors.request.use(
 );
 
 client.interceptors.response.use(response => {
-  console.log('start======>');
-  console.log('response==>', response);
-  console.log('调用token', response.config.headers.token);
-  console.log('调用地址', response.request.responseURL);
-  console.log('请求参数', response.config.data);
-  console.log('返回结果', response.data);
-  console.log('end======>');
+  // console.log('start======>');
+  // console.log('response==>', response);
+  // console.log('调用token', response.config.headers.token);
+  // console.log('调用地址', response.request.responseURL);
+  // console.log('请求参数', response.config.data);
+  // console.log('返回结果', response.data);
   const {config} = response;
   //调用高德API单独处理
   if (
@@ -69,8 +66,6 @@ client.interceptors.response.use(response => {
         toast.warn(res.message);
         throw new Error(res.message);
       default:
-        console.log('res.message', res.message);
-
         if (res.message === '群组不存在' || res.message === '请求参数错误') {
           toast.warn(res.message);
           return;
@@ -131,7 +126,6 @@ export async function get<T>(
     };
   }
   const {token} = (await StorageFactory.getSession('USER_LOGIN_INFO')) || {};
-  console.log('token', token);
   if (token) {
     headers.token = token;
   }

@@ -73,7 +73,6 @@ export default function Info(props: any) {
   const [groupOwner, setGroupOwner] = useState<IMSDK.GroupMemberRole | ''>('');
   const [isTopchat, setIsTopchat] = useState(false);
   const [allMember, setAllMember] = useState({});
-  console.log(Config.VITE_APP_GROUPURL, 'Config.VITE_APP_GROUPURL');
   useEffect(() => {
     DeviceEventEmitter.addListener('setUserData', data => {
       // 接收到 update 页发送的通知，后进行的操作内容

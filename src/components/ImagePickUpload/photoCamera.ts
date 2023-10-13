@@ -16,6 +16,7 @@ const options = {
   cameraType: 'back' as cameraType,
   includeBase64: false,
   saveToPhotos: false,
+  presentationStyle:'fullScreen',
   selectionLimit: 9,
 };
 

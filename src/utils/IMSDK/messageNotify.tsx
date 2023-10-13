@@ -32,10 +32,8 @@ import {hasAndroidPermission} from '../permission';
 
 PushNotification.configure({
   onRegister: function (token: any) {
-    console.log('TOKEN:', token);
   },
   onNotification: function (notification: any) {
-    console.log('NOTIFICATION:', notification);
     if (Platform.OS === 'ios') {
       notification.finish(PushNotificationIOS.FetchResult.NoData);
     }
@@ -70,14 +68,12 @@ if (Platform.OS === 'android') {
 }
 const soundNotice = new Sound(notice, error => {
   if (error) {
-    console.log('Error loading sound:', error);
   } else {
     // soundCall.setNumberOfLoops(-1); // 设置循环播放
   }
 });
 const activeSoundCall = new Sound(activeSound, error => {
   if (error) {
-    console.log('Error loading sound:', error);
   } else {
     activeSoundCall.setNumberOfLoops(-1); // 设置循环播放
   }
@@ -127,12 +123,6 @@ export default function MessageNotify() {
     //     return 0;
     // });
     delete temp.draft;
-    console.log(
-      'temp========>',
-      JSON.parse(JSON.stringify(temp)),
-      findConvIndex,
-      lastConversationList.current,
-    );
     if (findConvIndex === -1) {
       dispatch(updateConversationList([temp, ...lastConversationList.current]));
     } else {
@@ -162,13 +152,6 @@ export default function MessageNotify() {
   }, 1000);
 
   const onMessageNotify = async (data: any) => {
-    console.log(
-      'onMessageNotify==========>',
-      JSON.parse(JSON.stringify(data)),
-      lastConversationList.current,
-      conversationList,
-    );
-
     if (data.type === IMSDK.MessageType.READED) {
       return;
     }
@@ -211,14 +194,6 @@ export default function MessageNotify() {
     // await imsdk.insertMessageByThrottle(messageEntity);
 
     imsdk.comlink.insertMessageList([messageEntity]);
-    console.log(
-      'hasConv============>',
-      hasConv,
-      currentConversation,
-      conv_id,
-      findConvIndex,
-      data,
-    );
     let convEntity: any = {};
     if (findConvIndex === -1) {
       convEntity = imsdk.createConversationEntity(conv_id, data);

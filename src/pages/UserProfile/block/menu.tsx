@@ -18,8 +18,6 @@ import {selectPhotoTapped} from '@/components/ImagePickUpload/photoCamera';
 
 export default function Menu(props: any) {
   const {userInfo, setUserInfo} = props;
-  console.log('userInfo11', userInfo);
-
   const {t} = useTranslation();
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState(userInfo?.signatures || '');
@@ -73,8 +71,6 @@ export default function Menu(props: any) {
               <Avatar
                 onPress={() => {
                   selectPhotoTapped().then((res: any) => {
-                    console.log(res);
-
                     if (res?.[0]?.url) {
                       setUserInfo({
                         ...userInfo,

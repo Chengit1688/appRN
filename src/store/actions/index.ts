@@ -19,13 +19,10 @@ export const getDiscoverList = () => {
 };
 
 export const getSettingConfig = () => {
-  console.log(131);
 
   return (dispatch: Dispatch) => {
-    console.log(123);
 
     imsdk.getSettingConfig().then((res: any) => {
-      console.log('re111', res);
 
       dispatch(setSystemConfig(res.system_config));
     });

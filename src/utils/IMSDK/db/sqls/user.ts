@@ -25,7 +25,6 @@ export async function localUser(db: any) {
 }
 
 export function getUser(db: any, pageSize: number = 3, pageNo: number = 1) {
-  console.log(pageSize, pageNo);
   let sql = squel
     .select()
     .from('user_list')

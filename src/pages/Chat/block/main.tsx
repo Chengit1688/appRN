@@ -235,7 +235,6 @@ function Main(
           tempDataList.push(msg);
           break;
         case IMSDK.MessageType.GROUP_ONE_UNMUTE_NOTIFY:
-          console.log('currentConversation1123===>', currentConversation);
           if (currentConversation?.group?.role === 'user') {
             // 只针对普通用户过滤
             if (
@@ -288,7 +287,6 @@ function Main(
           break;
       }
     });
-    console.info(tempDataList, 'tempDataList-----');
     // 因为本本地数据库有时候排序有点乱。所以这里再排序一次
     tempDataList.sort((a: any, b: any) => a.seq - b.seq);
     return tempDataList.reverse();
@@ -340,7 +338,6 @@ function Main(
                         if (!ids.length) {
                           return;
                         }
-                        console.log(dataList, '====>dataList');
                         const arr = dataList.filter(item => {
                           return ids.includes(item.msg_id);
                         });
@@ -684,7 +681,6 @@ function Main(
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => {
-                console.log(isGoUserInfo, '===>isGoUserInfo');
                 !isGoUserInfo && showContact(row);
               }}>
               {/* <Avatar
@@ -760,7 +756,6 @@ function Main(
   };
 
   const MemoizedComponent = React.memo(renderItem, (pre, next) => {
-    console.log(pre, next, '===>111');
     return true;
   });
 
@@ -805,7 +800,6 @@ function Main(
             pageSize,
           )
           .then(res => {
-            console.log('loadNextPage===========>', res);
             if (!res) return;
             if (convRef?.current === res[0]?.conversation_id) {
               // console.log('loadNextPage===========>', res, convRef.current, res[0].conversation_id)
@@ -883,6 +877,8 @@ function Main(
     const maxSeq = currentConversation?.max_seq;
     getMessageList(+maxSeq);
   }, [conversation_id]);
+
+  // console.log('dataList====>>>',dataList)
 
   return (
     <View

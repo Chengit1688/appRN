@@ -309,7 +309,6 @@ export default function Manage(props: any) {
               cols={1}
               value={muteAllMember}
               onChange={e => {
-                console.log(e);
                 muteChange(e[0]);
               }}>
               <Text
