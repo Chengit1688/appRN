@@ -220,7 +220,6 @@ export default function Chat() {
 
   const onMessage = (msg, type) => {
     const mint = new Mint(shieldList);
-    console.log(type, '===>发送类型');
     try {
       if (atInfo.length) {
         let textMsg: any = {};

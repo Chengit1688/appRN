@@ -9,7 +9,6 @@ export default function Profile(props: any) {
   const {t} = useTranslation();
 
   const {navigate} = useNavigation();
-  console.log('userInfo', userInfo);
 
   return (
     <View

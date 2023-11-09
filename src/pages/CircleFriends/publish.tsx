@@ -179,7 +179,6 @@ export default function Publish({navigation, route}: any) {
         {newImgList.length > 0 ? (
           <View style={{...styles.flexRow, ...styles.imgMain}}>
             {_.map(newImgList, (imgItem: any, index) => {
-              console.log(imgItem, 'imgItem');
               return (
                 <View key={index} style={styles.addImg}>
                   {checkIsVideoType(imgItem?.url) ? (

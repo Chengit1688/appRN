@@ -90,7 +90,6 @@ export default function Operation(row: any, actons: any) {
         .getMessageByMsgId(msg_id)
         .catch((e: any) => console.log(e, 'e--'));
       const data = info.data[0];
-      console.log(data, 'data----');
       const res = await imsdk.comlink
         .collectMessage(data, flag)
         .catch((e: any) => console.log(e, 'e--'));

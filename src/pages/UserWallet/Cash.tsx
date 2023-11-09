@@ -15,7 +15,19 @@ export default function Cash() {
   // 获取提现配置
   const initData = () => {
     getWithdrawConfig({operation_id: Date.now()}).then(res => {
-      setConfig(res || {});
+      const dict = res;
+      const arr = res.columns;
+      arr.map((v,index)=>{
+        if(v.name == '提款人:'){
+          v.name = '收款姓名:'
+        }else if(v.name == '银行:'){
+          v.name = '支付宝账号:'
+        }else if(v.name == '卡号:'){
+          v.name = '电话号码:'
+        }
+      })
+      dict.columns = arr;
+      setConfig(dict || {});
     });
     getWallet({operation_id: Date.now()}).then(res => {
       setDetail(res || {});
@@ -26,6 +38,14 @@ export default function Cash() {
     initData();
   }, []);
 
+  const checkPhone=(phone)=>{
+    if (!(/^1[3456789]\d{9}$/.test(phone))) {
+      return false;
+    }
+    return true;
+  }
+
+
   const submit = () => {
     let falg = true;
     for (const item of config?.columns) {
@@ -34,7 +54,11 @@ export default function Cash() {
         falg = false;
         break;
       }
-
+      // if(item.name == '电话号码:'){
+      //   if(!checkPhone(item.value)){
+      //    return Toast.info(`请输入正确的电话号码`);
+      //   }
+      // }
       if (item.name === '提现金额' && item.value < config.min / 100) {
         Toast.info(`提现金额不能小于${config.min / 100}元`);
         falg = false;
@@ -64,6 +88,7 @@ export default function Cash() {
     }
   };
 
+  console.log('config===>>',config)
   return (
     <View>
       <Navbar title="提现" />
@@ -97,7 +122,7 @@ export default function Cash() {
                   keyboardType={
                     item.name === '提现金额' ? 'numeric' : 'default'
                   }
-                  value={item.value}
+                  value={`${item.value}`}
                   onChangeText={(text: any) => {
                     setConfig({
                       ...config,
@@ -187,8 +212,8 @@ export default function Cash() {
               margin: pt(16),
               marginBottom: pt(0),
             }}>
-            {`(最小提现金额：${config.min / 100}元，最大提现金额: ${
-              config?.max / 100
+            {`(最小提现金额：${config?.min?config?.min / 100:'0'}元，最大提现金额: ${
+             config?.max?config?.max / 100:'0'
             }元)`}
           </Text>
           <FullButton

@@ -84,7 +84,6 @@ export const checkMultiplePermissions = async () => {
         PERMISSIONS.ANDROID.READ_MEDIA_IMAGES,
         PERMISSIONS.ANDROID.READ_MEDIA_VIDEO,
       ]).then(statuses => {
-        console.log(statuses);
       });
 
       // PermissionsAndroid.request(

@@ -45,6 +45,7 @@ export default function UploadData(props: any) {
     shopImg: [],
   });
   useEffect(() => {
+    // console.log('shop_id===>>>02020202020')
     if (params?.shop_id) {
       setTitle('修改资料');
       setIsDetail(true);
@@ -105,6 +106,7 @@ export default function UploadData(props: any) {
 
   //上传
   const handleUploadimg = (type: UploadType) => {
+    // console.log('点击了上传')
     launchImageLibrary(
       {
         mediaType: 'photo',
@@ -118,6 +120,7 @@ export default function UploadData(props: any) {
             : 5 - imgs.shopImg.length,
       },
       response => {
+
         if (response.assets) {
           handleUpload(response.assets).then((res: any) => {
             changeImgList({

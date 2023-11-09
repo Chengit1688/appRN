@@ -271,7 +271,6 @@ function ChatMessage(props) {
       setPopVisible(false);
       message.success('保存成功');
     } catch (e) {
-      console.log(e);
       message.error('保存失败');
     }
   };
@@ -378,7 +377,6 @@ function ChatMessage(props) {
       const id = i.user ? i.user.user_id : i.user_id;
       return id === send_id;
     }); //判断当前普通用户是否还在群内
-    console.log('index=====>', index, msgUserRole);
     if (index === -1) return [];
     let dropList = [
       {

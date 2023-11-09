@@ -80,7 +80,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
         missingDimensionStrategy 'react-native-camera', 'general'
         multiDexEnabled true 
        
@@ -104,6 +104,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            resValue "string", "CodePushDeploymentKey", ""
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -111,6 +112,14 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
+            crunchPngs false
+            resValue "string", "CodePushDeploymentKey", "XJTEZHV-apoCQek7xdQz1pQZiLX88JwJCIgTu"
+
+        }
+          releaseStaging {
+            //这里的key为Staging的key
+            resValue "string", "CodePushDeploymentKey", "kudy4IXhoP2UUxjSk7HRtXpAs8JliQh9g89fW"
+            matchingFallbacks = ['release']
         }
     }
  

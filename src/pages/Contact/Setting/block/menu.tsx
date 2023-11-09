@@ -9,8 +9,6 @@ import {useNavigation} from '@react-navigation/native';
 
 export default function Menu(props) {
   const {userInfo, reload, setUserInfo, selfInfo} = props;
-  console.log(selfInfo, 'selfInfo');
-
   const {navigate} = useNavigation();
   const {t} = useTranslation();
 
@@ -57,8 +55,6 @@ export default function Menu(props) {
             <Switch
               value={userInfo?.black_status === 1}
               onValueChange={e => {
-                console.log('e', e);
-
                 if (e) {
                   imsdk.addToBlackList(userInfo.user_id).then(res => {
                     Toast.info(t('已加入黑名单'));

@@ -8,6 +8,7 @@ import {
   Text,
   StyleSheet,
   Dimensions,
+  VirtualizedList,
   FlatList,
   Modal,
 } from 'react-native';
@@ -292,7 +293,7 @@ export default function GroupMember({
                 全部成员
               </Text>
               {initVal.length > 0 ? (
-                <FlatList
+                <VirtualizedList
                   style={{
                     width: '100%',
                   }}
@@ -304,7 +305,7 @@ export default function GroupMember({
                   }
                   renderItem={items => {
                     return renderItem(items);
-                  }}></FlatList>
+                  }}></VirtualizedList>
               ) : null}
             </View>
           </Modal>

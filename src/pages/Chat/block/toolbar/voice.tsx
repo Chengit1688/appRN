@@ -239,7 +239,6 @@ export default function Voice({
 
   //发送语音消息
   const voiceSend = (result: any, duration = 0) => {
-    console.log(duration, 'duration');
     const client_msg_id = uuid.v4();
     //组装语音消息
     const msgContent = {

@@ -524,6 +524,10 @@ export class NewMessageItem extends Component<NewMessageProps> {
           return '[文件]';
         case 7:
           return '[名片]';
+        case 11:
+            return '[红包]';
+        case 12:
+            return '[红包领取]';
 
         default:
           return JSON.stringify(content);
@@ -685,20 +689,14 @@ export class NewMessageItem extends Component<NewMessageProps> {
   };
 
   shouldComponentUpdate(nextProps: Readonly<{}>, nextState: Readonly<{}>, nextContext: any): boolean {
-    console.log('llllll123')
-    console.log(nextProps.conv)
-    console.log(this.props.conv)
     if(JSON.stringify(nextProps.conv) == JSON.stringify(this.props.conv)){
-      console.log('llllll123222')
       return false
     }else{
-      console.log('llllll123333')
       return true
     }
   }
 
   render(): ReactNode {
-    console.log('render')
    let info =
     this.props.conv.type === 1 ? this.props.conv.user || {} : this.props.conv.type === 2 ? this.props.conv.group || {} : {};
     //console.log('info=======>', info);

@@ -213,7 +213,7 @@ export default function UploadData(props: any) {
       latitude: location.latitude.toString(),
       address: addRess,
       shop_type: shopType,
-      city_code: cityCode,
+      city_code: '0595',
       image: imgs.shopImg.map((item: any) => item.url),
       license: imgs.businessImg.map((item: any) => item.url).join(),
       id_front_img: imgs.id_front_img,
@@ -230,7 +230,13 @@ export default function UploadData(props: any) {
         shop_id: params.shop_id,
       };
       updateShopping(detailPrams).then(res => {
-        goBack();
+        if(res){
+          goBack();
+        }
+        // console.log('res====>>>>',res)
+        // goBack();
+      }).catch(error=>{
+        // console.log('error====>>>>',error)
       });
     } else {
       applyFor(_params).then((res: any) => {

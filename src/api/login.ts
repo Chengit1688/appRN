@@ -4,6 +4,7 @@ interface RequestParams {}
 interface RequestResponse {}
 
 export function userRegister(params: RequestParams) {
+  // console.log('params==>>',params)
   return post<RequestResponse>('/api/user/register', params);
 }
 
@@ -12,10 +13,12 @@ export function userLogin(params: RequestParams) {
 }
 
 export function settingConfig(params: RequestParams) {
+  // console.log('settingConfigparams===>>>>',params)
   return get<RequestResponse>('/api/setting/config', params);
 }
 
 export function domainConfig(params: RequestParams) {
+  // console.log('domainConfig===>>>>',params)
   return post<RequestResponse>('/api/setting/domain_list', params);
 }
 

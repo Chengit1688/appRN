@@ -169,7 +169,7 @@ const UserProfile = () => {
                     fontFamily: 'PingFang SC',
                     lineHeight: pt(48),
                   }}>
-                  {Number(detail.balance / 100).toFixed(2)}
+                  {detail?.balance ? Number(detail.balance / 100).toFixed(2):'0.00'}
                 </Text>
               </View>
               <Text

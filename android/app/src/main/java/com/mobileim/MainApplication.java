@@ -1,5 +1,4 @@
 package com.mobileim;
-
 import android.app.Application;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -13,6 +12,7 @@ import com.dooboolab.audiorecorderplayer.RNAudioRecorderPlayerPackage;
 import java.util.List;
 import com.mobileim.opensettings.*;
 import com.mobileim.badge.*;
+import com.microsoft.codepush.react.CodePush;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -21,6 +21,11 @@ public class MainApplication extends Application implements ReactApplication {
         @Override
         public boolean getUseDeveloperSupport() {
           return BuildConfig.DEBUG;
+        }
+
+        @Override
+        protected String getJSBundleFile() {
+            return CodePush.getJSBundleFile();
         }
 
         @Override

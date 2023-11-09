@@ -20,7 +20,7 @@ export default function VideoModal({
 }: any) {
   const [isLoading, setIsLoading] = useState(true);
   const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0.1);
+  const [currentTime, setCurrentTime] = useState(0);
   const handleLoad = (data: any) => {
     if (!isLoading) return;
     setIsLoading(false);
@@ -66,7 +66,7 @@ export default function VideoModal({
               setCurrentTime(data.currentTime);
             }
           }}
-          progressUpdateInterval={1000}
+          progressUpdateInterval={1}
           onBuffer={() => {
             // setIsLoading(false);
           }}

@@ -702,7 +702,6 @@ function Main(
   const handleLoadMore = () => {
     if (!loading && !endStatus) {
       const maxNums = +max_seq - initPageSize;
-      console.log('加载更多====>');
       getMessageList(+maxNums);
       setMaxSeq(maxNums);
     }

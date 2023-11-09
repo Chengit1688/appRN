@@ -57,7 +57,6 @@ export default function Join(props) {
   };
 
   const getGroupChat = async item => {
-    console.log(item, 'itemadsas');
     //    const {data}=await imsdk.comlink.getConversationById(item.conversation_id);
     const list = await imsdk.getConversationList();
     const hasGroup = list.filter(
@@ -135,7 +134,6 @@ export default function Join(props) {
       },
     ]);
     await imsdk.getConversationList().then(async res => {
-      console.log('update==========>', res);
       dispatch(checkoutConversation(item.group_id));
     });
     navigate('Chat');
@@ -146,7 +144,6 @@ export default function Join(props) {
       group_number: verifyCode,
       operation_id: `${Date.now()}`,
     }).then(res => {
-      console.log('resjoin', res);
       getGroupChat(res);
       // 进入群聊
     });

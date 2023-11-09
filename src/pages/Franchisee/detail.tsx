@@ -41,6 +41,7 @@ export default function FranchiseeDetail(props: any) {
       operation_id: new Date().getTime().toString(),
       shop_id: params.shop_id,
     }).then((res: any) => {
+      // console.log('res===>>>',res)
       setCreator(res.creator_id === userInfo.user_id);
 
       setQRCode(

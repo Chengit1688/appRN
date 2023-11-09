@@ -132,7 +132,6 @@ export default function Info(props: any) {
         page_size: 10,
       })
       .then((res: any) => {
-        console.log(res, 'res');
         setGroupMember({
           ...res,
           list: res.list

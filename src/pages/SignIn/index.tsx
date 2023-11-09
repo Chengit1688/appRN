@@ -67,7 +67,9 @@ export default function SignInIndex(props: any) {
         ...res,
         list: _res,
       });
-    });
+    })
+    // .catch(err => {
+    // });
   };
 
   //获取当前签到数据

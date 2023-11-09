@@ -42,7 +42,6 @@ export async function insertUser(user: any) {
     );
     return data;
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,
@@ -60,7 +59,6 @@ export async function getUserById(id: string) {
     );
     return data;
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,
@@ -75,7 +73,6 @@ export async function deleteUserById(conversationID: string) {
     const execResult = await deleteUserByIdLocal(db, conversationID);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,
@@ -90,7 +87,6 @@ export async function updateUserById(user: any) {
     const execResult = await updateUserByIdLocal(db, user);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,
@@ -105,7 +101,6 @@ export async function insertUserList(user: any[]) {
     const execResult = await batchInsertUserList(db, user);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,

@@ -19,7 +19,6 @@ export const sendFileMessage = (
   currentConversation: any,
   source?: string,
 ) => {
-  console.log(source, 'source=======>');
   const client_msg_id = uuid.v4();
   if (source === 'more') {
     file = {
@@ -35,7 +34,6 @@ export const sendFileMessage = (
   if (checkIsVideoType(file.fileName)) {
     fileType = 5;
   }
-  console.log('file===>', file, fileType);
   let base64ImageData = null;
   if (file.base64) {
     const base64Data = Buffer.from(file.base64, 'base64').toString('base64');

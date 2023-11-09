@@ -154,7 +154,6 @@ export default function ChatFile({
         .getMessageByMsgId(msg_id)
         .catch(e => console.log(e, 'e--'));
       const data = info.data[0];
-      console.log(data, 'data----');
       const res = await imsdk.comlink
         .collectMessage(data, flag)
         .catch(e => console.log(e, 'e--'));

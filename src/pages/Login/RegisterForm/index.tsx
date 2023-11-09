@@ -55,7 +55,7 @@ const genderList: any = [
 export default function RegisterForm(props: any) {
   const {accountType, registerConfig, verification_point, setAccountType} =
     props;
-
+  //  console.log('accountType===>>>',accountType)
   const dispatch: AppDispatch = useDispatch();
   const [password, setPassword] = useState('');
   const [invite_code, setInviteCode] = useState('');
@@ -153,7 +153,6 @@ export default function RegisterForm(props: any) {
       // requestParams.verification_point = verification_point;
       requestParams.captcha_type = 'blockPuzzle';
     }
-
     handleRegister.run(requestParams);
   };
 
@@ -180,6 +179,8 @@ export default function RegisterForm(props: any) {
       }
     },
     onError: error => {
+      // console.log('error===>>>>>>',error)
+      Toast.fail(error.message);
       if (error.message === '2') {
         //setLoginCaptcha(true);
       }
@@ -247,7 +248,7 @@ export default function RegisterForm(props: any) {
             </View>
           ) : null}
 
-          {accountType === 1 && registerConfig?.is_sms_code === 1 ? (
+          {accountType === 1 ?  (
             <View style={styles.formItemFlex}>
               <TextInput
                 onChangeText={(value: string) => setSmsCode(value)}

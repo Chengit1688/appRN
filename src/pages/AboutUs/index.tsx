@@ -15,12 +15,12 @@ export default function LoginPage({navigation}: any) {
       <View flexG flex-1 bg-white spread style={styles.pageContainer}>
         <View flexG centerH>
           <Text center text14 text>
-            当前版本:1.0.0
+            当前版本:1.10.01
           </Text>
         </View>
         <View row centerV centerH>
           <Text text13 text>
-            登陆即代表同意
+            登录即代表同意
           </Text>
           <TouchableOpacity
             activeOpacity={0.8}

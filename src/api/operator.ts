@@ -40,6 +40,7 @@ export function shoppingDetail(params: RequestParams) {
  * @param
  */
 export function updateShopping(params: RequestParams) {
+  console.log('updateShopping===>>>>',params)
   return post<RequestResponse>('/api/operator/update', params);
 }
 

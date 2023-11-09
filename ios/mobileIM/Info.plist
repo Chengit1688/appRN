@@ -90,5 +90,7 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CodePushDeploymentKey</key>
+	<string>CUlVKKrmOBDz7T-ZSh3-qcn46yuvu_wlZ6y82</string>
 </dict>
 </plist>

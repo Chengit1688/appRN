@@ -299,7 +299,6 @@ export async function batchDeleteMessage(ids: string[]) {
     const execResult = await batchDeleteMessageLocal(db, ids);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,
@@ -314,7 +313,6 @@ export async function deleteAllMessage() {
     const execResult = await deleteAllMessageLocal(db);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,
@@ -329,7 +327,6 @@ export async function insertMessage(message: IMSDK.Message) {
     const execResult = await insertMessageLocal(db, message);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,
@@ -349,7 +346,6 @@ export async function insertMessageList(messageList: IMSDK.Message[]) {
     const execResult = await batchInsertMessageListLocal(db, data);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
-    console.error(e, data);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,
@@ -364,7 +360,6 @@ export async function deleteMessageByUserId(ids: string[], conv_id) {
     const execResult = await deleteLocalMessageByUserId(db, ids, conv_id);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,
@@ -379,7 +374,6 @@ export async function deleteMessageByConvId(conv_id) {
     const execResult = await deleteLocalMessageByConvId(db, conv_id);
     return formatResponse(converSqlExecResult(execResult[0], 'SnakeCase', []));
   } catch (e) {
-    console.error(e);
     return formatResponse(
       undefined,
       DatabaseErrorCode.ErrorInit,

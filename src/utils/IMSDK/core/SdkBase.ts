@@ -70,6 +70,7 @@ export abstract class SdkBase extends Subscriber {
   }
 
   public login(params: LoginParams) {
+    // console.log('登录进来了没有====>>>>',params)
     this.user_id = params.user_id;
     this.token = params.token;
     if (this.mqtt_client) return Promise.resolve();
@@ -95,7 +96,7 @@ export abstract class SdkBase extends Subscriber {
       //console.log("mqtt",this.connect_url, uuid.v4())
       this.device_id = await DeviceInfo.getUniqueId();
 
-      console.debug('mqtt connect info ---------', this.connect_url, {
+      console.log('mqtt connect info ---------', this.connect_url, {
         clientId: `${this.station}_${this.user_id}_${this.device_id}`,
         username: `${this.station}_${this.user_id}`,
         password: Config.VITE_APP_MQTT_PASSWORD,

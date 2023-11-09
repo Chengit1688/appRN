@@ -359,6 +359,9 @@ export default function Message() {
     }),
   };
 
+
+  // console.log('messageList====>>>',messageList)
+
   return (
     <>
       <Header titleLeft title="消息" right={headerRight()} />

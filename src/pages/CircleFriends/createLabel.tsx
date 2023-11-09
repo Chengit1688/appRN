@@ -31,8 +31,6 @@ export default function CreateLabel(props: any) {
   const [loading, setLoading] = useState(false);
   const [userList, setUserList] = useState([]);
   const {navigate, goBack} = useNavigation();
-  console.log('userList', userList);
-
   useEffect(() => {
     DeviceEventEmitter.addListener('setUserData', data => {
       // 接收到 update 页发送的通知，后进行的操作内容

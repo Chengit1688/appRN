@@ -8,6 +8,7 @@ interface RequestResponse {}
  * @param
  */
 export function getNewList(params: RequestParams) {
+    // console.log('params===>>>',params)
     return post<RequestResponse>('/api/news/list', params);
 }
 
@@ -16,6 +17,7 @@ export function getNewList(params: RequestParams) {
  * @param
  */
 export function getNewsDetail(params: RequestParams) {
+       console.log('params===>>>',params)
     return post<RequestResponse>('/api/news/detail', params);
 }
 

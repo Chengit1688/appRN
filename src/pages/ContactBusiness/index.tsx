@@ -32,7 +32,6 @@ export default function BusinessCard() {
         face_url: formatUrl(item.face_url),
       };
     });
-    console.log(cardInfo, 'cardInfo');
     //选中的人的数组
     navigate('Chat', {source: 'businessCard', cardInfo: cardInfo[0]});
   };

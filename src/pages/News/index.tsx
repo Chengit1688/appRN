@@ -87,6 +87,7 @@ export default function News(props: any) {
       page_size: pagination?.pageSize || 10,
     })
       .then((res: any) => {
+        // console.log('res=====>>>',res)
         const newArr = listArr.concat(res.list);
 
         if (newArr.length >= res.count) {

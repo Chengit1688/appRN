@@ -48,17 +48,17 @@ export default function LoginForm(props: any) {
     manual: true,
     onSuccess: async (result: any) => {
       if (result) {
+        // console.log('result===>>>',result)
         dispatch(setSelfInfo({user_id: result.user_id}));
         await StorageFactory.setSession('USER_LOGIN_INFO', {
           user_id: result.user_id,
           token: result.token,
         });
-
         StorageFactory.setLocal('USER_LOGIN_ACCOUNT', {
           account,
           phone_number,
           password,
-        });
+        })
 
         getUserInfo(
           {
@@ -89,6 +89,8 @@ export default function LoginForm(props: any) {
       }
     },
     onError: (error: any) => {
+      // console.log('userLogin===>>>>',error)
+      Toast.fail(error.message)
       GlobalLoading.endLoading();
     },
   });
@@ -254,7 +256,7 @@ export default function LoginForm(props: any) {
         <Button
           onPress={confirmEnter}
           style={styles.loginButton}
-          label={'登陆'}
+          label={'登录'}
         />
       </View>
       <View
@@ -267,7 +269,7 @@ export default function LoginForm(props: any) {
           style={{
             color: '#666',
           }}>
-          登陆即代表同意
+          登录即代表同意
         </Text>
         <TouchableOpacity
           activeOpacity={0.8}
@@ -297,6 +299,8 @@ export default function LoginForm(props: any) {
           </Text>
         </TouchableOpacity>
       </View>
+
+      <Text style={{color:'red',textAlign:'center'}}>热更新测试</Text>
 
       <View style={styles.loginType}>
         <View style={styles.loginWayItem}>

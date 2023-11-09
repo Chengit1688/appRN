@@ -24,6 +24,7 @@ export function joinTeam(params: RequestParams) {
  * @param
  */
 export function shoppingList(params: RequestParams) {
+  // console.log('params===>>>',params)
   return post<RequestResponse>('/api/shopping/search', params);
 }
 

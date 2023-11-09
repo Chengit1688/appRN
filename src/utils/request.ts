@@ -19,6 +19,7 @@ export const client = axios.create({
 
 function handleError(error: AxiosError) {
   const {code} = error;
+  // console.log('code====>>>>>>',code)
   if (code === 'ECONNABORTED') {
     // TODO
   }
@@ -34,9 +35,9 @@ client.interceptors.request.use(
   },
 );
 
+
+
 client.interceptors.response.use(response => {
-  // console.log('start======>');
-  // console.log('response==>', response);
   // console.log('调用token', response.config.headers.token);
   // console.log('调用地址', response.request.responseURL);
   // console.log('请求参数', response.config.data);
@@ -51,6 +52,8 @@ client.interceptors.response.use(response => {
   }
   const res = response.data;
   const {code} = res;
+  // 这里是打印接口数据
+  // console.log('进来这里啦吗res====>>>>>>',res)
   if (response.request.responseURL.includes('vite.svg')) {
     return response.data;
   } else {
@@ -118,6 +121,7 @@ export async function get<T>(
   headers?: any,
   config?: any,
 ) {
+  // console.log('start======>2');
   if (headers) {
     headers.im_site = Config.VITE_APP_SITEID;
   } else {
@@ -129,8 +133,7 @@ export async function get<T>(
   if (token) {
     headers.token = token;
   }
-  // TODO: create request url
-  // api = Config.VITE_APP_AXIOSURL + api
+  console.log('getapi======>2',api);
   return request<T>({
     url: api,
     method: 'GET',
@@ -142,7 +145,8 @@ export async function get<T>(
 
 export async function post<T>(api: string, data: any, config?: any) {
   // TODO: create request url
-
+  // console.log('VITE_APP_AXIOSURL===>>',Config.VITE_APP_AXIOSURL)
+  // console.log('apistart======>3',api);
   const headers: any = {
     im_site: Config.VITE_APP_SITEID,
   };
@@ -155,6 +159,10 @@ export async function post<T>(api: string, data: any, config?: any) {
   if (api.indexOf('third/upload/v2') > -1) {
     headers['Content-Type'] = 'multipart/form-data';
   }
+  // console.log('token====>>>',token)
+  // console.log('Config======>2', Config.VITE_APP_AXIOSURL);
+  // console.log('postapi======>',token);
+  // console.log('postheaders======>3',headers);
   // api = Config.VITE_APP_AXIOSURL + api
   return request<T>({
     url: api,

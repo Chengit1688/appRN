@@ -172,7 +172,6 @@ export default function ChatImage({
       //   }
       // }
     } catch (error) {
-      console.log(error, uri, '保存图片到相册出错');
       Toast.info('保存视频出错,请开启文件权限');
     }
   };

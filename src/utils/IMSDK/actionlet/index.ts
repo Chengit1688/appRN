@@ -31,6 +31,7 @@ export abstract class IMActionlet extends BaseActionlet {
 		let friend_version = '0';
 		let groups_version: Array<any> = [];
 		await getVersion({operation_id: Date.now().toString()}).then(res => {
+      // console.log('res===>>>',res)
 			if (res?.conversation_version) {
 				conv_version = res.conversation_version;
 			}

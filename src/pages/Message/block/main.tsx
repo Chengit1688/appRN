@@ -60,8 +60,6 @@ export default function Main({source}: {source: any[]}) {
 
   const onPressItem = useCallback(
     async (conversation: IMSDK.Conversation) => {
-      console.log('onPressItem');
-      console.log(conversation, currentConversation);
       const conv_id = conversation.conversation_id;
       if (conversation.at) {
         dispatch(chearConversationAtInfo(conversation));

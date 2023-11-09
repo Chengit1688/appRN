@@ -56,6 +56,7 @@ import GroupMember from '../GroupChat/GroupMember';
 import VoiceModal from './block/toolbar/voiceModal';
 import RedPacketModal from '@/components/RedPacketModal';
 import {showRedPacket} from './block/toolbar/redPacket';
+import commonMethods from '@/utils/commonMethods';
 
 const checkIsImgType = file => {
   if (
@@ -134,6 +135,7 @@ export default function Chat() {
   }, 200);
 
   useEffect(() => {
+
     switch (params?.source) {
       case 'businessCard':
         //直接发送名片
@@ -251,12 +253,12 @@ export default function Chat() {
         updateConv,
       );
 
-      setTimeout(() => {
-        // listRef.current.scrollTo({
-        // 	index: Number.MAX_VALUE,
-        // 	align:'bottom'
-        // });
-      }, 1);
+      // setTimeout(() => {
+      //   // listRef.current.scrollTo({
+      //   // 	index: Number.MAX_VALUE,
+      //   // 	align:'bottom'
+      //   // });
+      // }, 1);
     },
     [currentConversation],
   );
@@ -479,7 +481,7 @@ export default function Chat() {
       // const owner=data.filter((item)=>item.role=='owner' || item.role=='admin');
       // // console.error(owner)
       // setGroupMaster(owner);
-      dispatch(setCurrentMemberList(data));
+      // dispatch(setCurrentMemberList(data));
     }
   };
   // const isOwner = useMemo(() => {
@@ -526,7 +528,15 @@ export default function Chat() {
     };
   }, [currentConversation]);
 
+  // commonMethods.useDidUpdateEffect(() => {
+  //   geliMemberList();
+  //   return () => {
+  //     dispatch(setCurrentMemberList([]));
+  //   };
+  // }, [currentConversation]);
+
   // console.log('params========>>>', params);
+  // console.log('conv===>>>',conv)
 
   return (
     // <View flex {...panResponder.panHandlers}>
@@ -551,7 +561,10 @@ export default function Chat() {
                   if (params?.source === 'createGroup') {
                     navigate('Message' as never);
                   } else {
+                    // console.log('点击来返回')
                     goBack();
+                    dispatch(setCurrentMemberList([]));
+                    dispatch(checkoutConversation(null));
                   }
                 },
               })
@@ -712,15 +725,17 @@ export default function Chat() {
                     activeOpacity={0.8}
                     label={t('发送')}
                     onPress={async () => {
-                      console.log('点击了发送')
                       if (inputVal !== undefined && inputVal.trim().length) {
                         const val = inputVal.trim();
                         if (val && quoteContent) {
+                          console.log('=====>>>发送1')
                           onMessage(val, 9);
                           setQuoteContent('');
                         } else if (isUrl(val)) {
+                          console.log('=====>>>发送2')
                           onMessage(val, 10);
                         } else {
+                          console.log('=====>>>发送3')
                           onMessage(val, 1);
                         }
                         setInputVal('');
@@ -847,3 +862,8 @@ export default function Chat() {
     </View>
   );
 }
+
+
+
+
+

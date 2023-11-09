@@ -48,13 +48,11 @@ export default function FilePreview(props: any) {
         <FullButton
           label="其他应用打开"
           onPress={() => {
-            console.log(123);
             Share.open({
               message: '分享文件',
               url: params.url,
             })
               .then(res => {
-                console.log(res);
               })
               .catch(err => {
                 err && console.log(err);

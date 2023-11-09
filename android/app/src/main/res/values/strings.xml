@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">止正 Talk</string>
+     <!-- <string moduleConfig="true" name="CodePushDeploymentKey">kudy4IXhoP2UUxjSk7HRtXpAs8JliQh9g89fW</string> -->
 </resources>

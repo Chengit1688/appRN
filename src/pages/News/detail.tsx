@@ -38,7 +38,6 @@ export default function NewsDetail() {
           time: dayjs(res.created_at * 1000).format('YYYY年MM月DD日 HH:mm'),
           content: res.content,
         });
-        console.log(res.content);
         // let jsCode = `window.receiveMessage(${JSON.stringify(res.content)}); true;`;
         showWebView(true);
       })
@@ -56,7 +55,6 @@ export default function NewsDetail() {
   }, [params]);
 
   const handleMessage = (event: any) => {
-    console.log(event.nativeEvent.data, '获取接收数据');
     setWebViewHeight(event.nativeEvent.data);
   };
 

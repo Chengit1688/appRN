@@ -12,7 +12,6 @@ import FullButton from '@/components/FullButton';
 import {shallowEqual, useSelector} from 'react-redux';
 
 export default function Info(props) {
-  console.log('props.route.params', props.route.params);
   const {navigation} = props;
   const {info} = props.route.params;
   const [userInfo, setUserInfo] = useState(info || {});
@@ -26,7 +25,6 @@ export default function Info(props) {
 
   const init = () => {
     imsdk.getUserProfile(info.user_id).then(res => {
-      console.log('res----userInfo', userInfo);
       setUserInfo(res);
     });
   };

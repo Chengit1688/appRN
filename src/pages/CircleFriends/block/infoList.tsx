@@ -211,7 +211,6 @@ export default function InfoList(props: any) {
 
   // 详情的评论和点赞
   const renderDetailComment = (item: any) => {
-    console.log('item====>', item);
     return (
       <View>
         {item.Likes?.length > 0 || item.Comments?.length > 0 ? (

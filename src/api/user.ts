@@ -42,6 +42,8 @@ export async function uploadV2(params: any, config?: any) {
   }
   await StorageFactory.setSession('SSO_DOMAIN', newConfig.baseURL);
 
+  console.log('params====>>>',params)
+  console.log('newConfig====>>>',newConfig)
   return post<RequestResponse>('/api/third/upload/v2', params, newConfig);
 }
 export async function ossUpload(params: any) {

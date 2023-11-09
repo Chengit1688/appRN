@@ -103,6 +103,7 @@ export const handleUpload = (
 
   let imgData: any = [],
     state = 0;
+    // console.log('file===>>>>',file)
   return new Promise((resolve, reject) => {
     for (let i = 0; i < file.length; i++) {
       let source = file[i]?.uri;
@@ -111,7 +112,6 @@ export const handleUpload = (
       } else {
         source = file[i]?.uri.replace('file://', '');
       }
-
       let _file = {uri: source, type: file[i].type, name: file[i].fileName};
       if (checkIsImgType(source)) {
         fileType = 3;
@@ -127,6 +127,7 @@ export const handleUpload = (
         onUploadProgress,
       })
         .then(async (res: any) => {
+          // console.log('res===>>>>',res)
           const domain = await StorageFactory.getSession('SSO_DOMAIN');
           const obj = {
             ...res,
@@ -163,6 +164,7 @@ export const ImagePickerUpload = ({
     cameraType: 'back' as cameraType,
     includeBase64: true,
     saveToPhotos: false,
+    multiple: false,
     selectionLimit: limit || 9,
   };
 

@@ -1,6 +1,6 @@
 const SDK_EVENTS = {
-  SDK_READY: 'SDK_READY', // sdk 登陆成功后触发
-  SDK_NOT_READY: 'SDK_NOT_READY', // sdk登陆失败后触发
+  SDK_READY: 'SDK_READY', // sdk 登录成功后触发
+  SDK_NOT_READY: 'SDK_NOT_READY', // sdk登录失败后触发
 } as const;
 
 const CONVERSATION_EVENTS = {

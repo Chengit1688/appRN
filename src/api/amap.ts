@@ -16,6 +16,8 @@ interface RequestResponse {
  * @param
  */
 export function getGeocodeRegeo(params?: RequestParams) {
+    // console.log('params======>>>>',params)
+    // console.log('VITE_AMAP_BASE_URL======>>>>',Config.VITE_AMAP_BASE_URL)
     return get<RequestResponse>(`/v3/geocode/regeo`, {
         key:Config.VITE_AMAP_KEY,
         ...params
@@ -23,6 +25,7 @@ export function getGeocodeRegeo(params?: RequestParams) {
         baseURL: Config.VITE_AMAP_BASE_URL,
         platform: 'amap'
     });
+
 }
 
 /**

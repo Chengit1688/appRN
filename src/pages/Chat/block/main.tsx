@@ -772,7 +772,7 @@ function Main(
     },
     [currentConversation],
   );
-  const initPageSize = 30;
+  const initPageSize = 15;
   const [loading, setLoading] = useState(false);
   const [endStatus, setEndStatus] = useState(false);
   const [list, setList] = useState<any>([]);
@@ -890,7 +890,7 @@ function Main(
       {dataList.length > 0 && (
         <VirtualizedList
           inverted
-          initialNumToRender={30}
+          initialNumToRender={15}
           data={dataList}
           ListFooterComponent={() => {
             return loading ? <ActivityIndicator animating /> : null;
